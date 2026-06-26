@@ -1,0 +1,58 @@
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+select,
+textarea,
+input[type="radio"],
+input[type="checkbox"] {
+	accent-color: var(--wp--preset--color--primary);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	border-radius: 5px;
+	margin-bottom: 15px;
+	width: 100%;
+	border: 1px solid var(--wp--preset--color--grey);
+	height: 40px;
+}
+
+select {
+	height: 40px;
+}
+
+textarea {
+	height: 100px;
+	padding: 10px;
+}
+
+label {
+	width: 100%;
+	display: block;
+}

@@ -1,0 +1,139 @@
+$breakpoints: (
+	xs: 320px,
+	xsl: 392px,
+	surface-duo: 540px,
+	sm: 576px,
+	md: 768px,
+	mdx: 780px,
+	lg: 992px,
+	lgs: 1023px,
+    lgx: 1024px,
+	lgxx: 1025px,
+	xl: 1200px,
+	mxl: 1300px,
+	xxl: 1400px,
+	mxxl: 1500px,
+	lxxl: 1700px,
+	xxxl: 2000px,
+) !default;
+
+// Return the next breakpoint's value (min-width) or null if none.
+@function _breakpoint-next($key, $map: $breakpoints) {
+	$keys: map-keys($map);
+	$pos: index($keys, $key);
+	@if $pos == null {
+		@return null;
+	}
+	$next-pos: $pos + 1;
+	@if $next-pos > length($keys) {
+		@return null;
+	}
+	$next-key: nth($keys, $next-pos);
+	@return map-get($map, $next-key);
+}
+
+$_mq-epsilon: 0.02px !default;
+
+@mixin respond-to($key, $direction: up) {
+	$value: map-get($breakpoints, $key);
+
+	@if $value == null {
+		@error "respond-to(): Unknown breakpoint `#{$key}`. Available keys: #{map-keys($breakpoints)}";
+	}
+
+	@if $direction == up {
+		@media (min-width: $value) {
+			@content;
+		}
+	} @else if $direction == down {
+		$max: $value - $_mq-epsilon;
+		@media (max-width: $max) {
+			@content;
+		}
+	} @else if $direction == only {
+		$next: _breakpoint-next($key);
+		@if $next == null {
+			// If there's no next breakpoint, `only` is equivalent to `up`.
+			@media (min-width: $value) {
+				@content;
+			}
+		} @else {
+			$max: $next - $_mq-epsilon;
+			@media (min-width: $value) and (max-width: $max) {
+				@content;
+			}
+		}
+	} @else {
+		@error "respond-to(): Unknown direction `#{$direction}`. Use `up`, `down` or `only`.";
+	}
+}
+
+// Convenience wrappers for clearer usage in components
+@mixin media-breakpoint-up($key) {
+	@include respond-to($key, up) {
+		@content;
+	}
+}
+
+// Backwards-compatible alias used across the theme
+@mixin media-up($key) {
+	@include respond-to($key, up) {
+		@content;
+	}
+}
+
+@mixin media-down($key) {
+	@warn "media-down('#{$key}') emits a max-width media query. Prefer mobile-first: default styles + media-up().";
+	@include respond-to($key, down) {
+		@content;
+	}
+}
+
+@mixin media-only($key) {
+	@include respond-to($key, only) {
+		@content;
+	}
+}
+
+@mixin surface-duo {
+  @media screen and (aspect-ratio: 3/4) and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin media-down-landscape($key) {
+    $value: map-get($breakpoints, $key);
+
+    @if $value == null {
+        @error "Unknown breakpoint: #{$key}";
+    }
+
+    $max: $value - $_mq-epsilon;
+
+    @media (max-width: $max) and (orientation: landscape) {
+		@content;
+    }
+}
+
+@mixin respond-between($min-key, $max-key) {
+    $min-value: map-get($breakpoints, $min-key);
+    $max-value: map-get($breakpoints, $max-key);
+
+    @if $min-value == null {
+        @error "respond-between(): Unknown breakpoint `#{$min-key}`. Available keys: #{map-keys($breakpoints)}";
+    }
+
+    @if $max-value == null {
+        @error "respond-between(): Unknown breakpoint `#{$max-key}`. Available keys: #{map-keys($breakpoints)}";
+    }
+
+    // reduce 0.02px from max
+    $max-query: $max-value - $_mq-epsilon;
+
+    @media (min-width: $min-value) and (max-width: $max-query) {
+        @content;
+    }
+}
+
+
+

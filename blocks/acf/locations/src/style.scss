@@ -1,0 +1,215 @@
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/base/mixins";
+
+.locations {
+  	padding: 2.5rem 0;
+
+  	@include media-up(lgx) {	
+	    padding: 5.75rem 0;
+	}
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+
+    @include media-up(lgx) {
+        flex-direction: row;
+    }
+  }  
+   
+  &__map {
+    position: relative;
+    flex: 1;
+
+    &-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    font-size: $h3-font-size;
+    color: $black;
+    font-weight: 300;
+    font-family: $font-raleway;
+    line-height: 1.4;
+    letter-spacing: 0.6875rem;
+    text-transform: uppercase;
+    margin: 0;
+    padding-bottom: 2.5rem;
+
+    @include media-down(md) {
+      letter-spacing: 0.25rem;
+    }
+  }
+
+  &__text {
+    color: $black;
+    font-size: $h5-font-size;
+    margin: 0rem;
+    line-height: 1.75;
+    font-weight: 300;
+    padding-bottom: 2.5rem;
+    letter-spacing: 0.125rem;
+    @include media-down(md) {
+      letter-spacing: 0.0625rem;
+    }
+    &:last-child {
+      font-size: $paragraph;
+    }
+  }
+
+  &__tabs {  
+    gap: 0.625rem;
+    background: $surface-secondary;
+    padding: 0.625rem;
+    border-radius: 624.9375rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    outline: none;
+
+	&.mobile-tabs {
+      display: grid;
+	  grid-template-columns: repeat(2, 1fr);  
+	  @include media-up(lg) {
+		display: none;
+	  }
+    }
+	&.desktop-tabs {
+      display: none;
+	  @include media-up(lg) {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	  }
+    }
+	 &:has(.locations__tab:nth-child(3)) {
+        border-radius: 0; 
+    }
+  }
+
+
+  &__tab {
+    flex: 1;
+    background: transparent;
+    border: none;
+    font-size: $Sub-Heading-two;
+    font-family: $font-raleway;
+    line-height: 1.41;
+    letter-spacing: 0.0625rem;
+    padding: 0.625rem 0.625rem;
+    border-radius: 624.9375rem;
+    cursor: pointer;
+    font-weight: 700;
+    color: $grey-1;
+    transition: 0.3s;
+
+    @include media-up(lgx) {
+        padding: 0.625rem 1.25rem;
+    }
+
+    &--active {
+      border-radius: 624.9375rem;
+      background: $white;
+      box-shadow: 0 0.25rem 0.5625rem 0 rgba(41, 41, 59, 0.10);
+    }
+  }
+
+  &__panel {
+    display: none;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__card {
+    padding: 2.5rem;
+    border: 0.125rem solid $warm-grey-5;
+    background: $white;
+    box-shadow: 0 1.25rem 2.5rem 0 rgba(0, 0, 0, 0.12);
+  }
+
+  &__details {
+        display: flex;
+        text-align: left;
+        gap: 0.625rem;
+        align-items: center;
+
+        @include media-up(xl) {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.625rem;
+        }
+    }
+
+     &__contact {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        margin-bottom: 0;
+    }
+    &__icon {
+        width: 3rem;
+        height: 3rem;
+        flex-shrink: 0;
+        border-radius: 0.3125rem;
+        background: $red-6;
+        padding: 0.625rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+    }
+
+     &__value {
+        color: $grey-1;
+        font-family: $font-roboto;
+        font-size: $h5-font-size;
+        text-decoration: none;
+        font-weight: 300;
+        line-height: 1.75;
+        letter-spacing: 1px;
+
+        @include media-up(xl) {
+            letter-spacing: 2px;
+        }
+    }
+
+    &__label {
+        font-weight: 700;
+        font-family: $font-raleway;
+        color: $grey-1;
+        font-size: $Sub-Heading-two;
+        letter-spacing: 0.0625rem;
+        line-height: 1.5625rem;
+    }
+
+  &__card-title {
+    font-size: $subheading-font-size;
+    font-family: $font-raleway;
+    font-weight: 700;
+    color: $grey-1;
+    line-height: 1.25;
+    letter-spacing: 0.0625rem;
+    margin: 0;
+  }
+
+  &__card-address {
+    margin: 0;
+    font-family: $font-roboto;
+    font-weight: 300;
+    padding: 1.25rem 0;
+    line-height: 1.7;
+    letter-spacing: 0.125rem;
+  }
+}
+

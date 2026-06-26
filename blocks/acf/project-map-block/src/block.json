@@ -1,0 +1,30 @@
+{
+    "name": "sms/project-map-block",
+    "title": "Project Map",
+    "description": "A custom project map block.",
+    "category": "sms-blocks",
+    "icon": "admin-site-alt3",
+    "keywords": [
+        "sms-block"
+    ],
+    "version": "1.0.0",
+    "script": [
+        "file:../build/block.js"
+    ],
+    "style": [
+        "file:../build/style-block.css"
+    ],
+    "editorStyle": [
+        "file:../build/block.css"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "jsx": true,
+        "multiple": true
+    }
+}

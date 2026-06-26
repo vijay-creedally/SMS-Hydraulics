@@ -1,0 +1,148 @@
+.gfield {
+
+    .ginput_container {
+
+        position: relative;
+
+        & .clear-btn {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            cursor: pointer;
+            display: none;
+            color: $white;
+        }
+
+        & input {
+            padding-right: 1.875rem;
+        }
+    }
+
+    &.inquiry__field-has-focus {
+
+        & .clear-btn {
+            display: block;
+        }
+    }
+}
+
+.dropdown-item {
+    display: block;
+    padding: 1.375rem 1.4375rem;
+    margin: 0;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    & span {
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.4;
+        letter-spacing: 0.0625rem;
+        font-family: $font-raleway;
+        color: $grey-1;
+    }
+
+    &-wrapper {
+        position: relative !important;
+        width: 100%;
+        font-family: inherit;
+        font-size: 1rem;
+        line-height: 1.2;
+        -webkit-tap-highlight-color: transparent;
+
+        .dropdown-items {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: calc(100% + 1.25rem);
+            width: 100%;
+            max-height: 16.25rem;
+            overflow-y: auto;
+            box-sizing: border-box;
+            background: var(--Radial-Gradiant,
+                    radial-gradient(101.61% 59.76% at 50% 0%,
+                        $white 0%,
+                        $warm-grey-5 100%));
+            border-radius: 0.5rem;
+            padding: 1.375rem 1.4375rem;
+            z-index: 1200;
+            flex-direction: column;
+
+            &.open {
+                display: flex;
+                gap: 0.625rem;
+            }
+        }
+
+        &.open {
+            .dropdown-item-trigger::after {
+                transform: translateY(-50%) rotate(180deg) !important;
+            }
+        }
+    }
+
+    &-trigger {
+        font-size: $h6-font-size !important;
+        font-weight: 400 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.3125rem !important;
+        line-height: 1.4 !important;
+        color: $white !important;
+        border-radius: 0.3125rem !important;
+        border: 0.125rem solid $stroke !important;
+        background: rgba(2, 0, 7, 0.8) !important;
+        padding: 0.75rem 1.25rem !important;
+        padding-left: 3.375rem !important;
+        height: 3.75rem !important;
+        display: flex !important;
+        align-items: center !important;
+        position: relative;
+
+        &[data-placeholder="true"] {
+            color: $white;
+        }
+
+        &:focus {
+            outline: none !important;
+            border: 0.125rem solid $blue-5 !important;
+        }
+
+        &::after {
+            content: "";
+            position: absolute !important;
+            top: 50% !important;
+            right: 1rem !important;
+            transform: translateY(-50%) rotate(0deg) !important;
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-image: url('/assets/images/dropdown-arrow.svg') !important;
+            pointer-events: none !important;
+            transition: transform 0.3s ease !important;
+        }
+
+        &::before {
+            content: "";
+            position: absolute !important;
+            top: 50% !important;
+            left: 1rem !important;
+            transform: translateY(-50%) !important;
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+            background-size: contain !important;
+            background-repeat: no-repeat !important;
+            background-image: url('/assets/images/dropdown-item-left.svg') !important;
+        }
+    }
+}

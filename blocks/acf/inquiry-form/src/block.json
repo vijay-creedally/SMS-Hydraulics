@@ -1,0 +1,33 @@
+{
+  "name": "sms/inquiry-block",
+  "title": "Inquiry",
+  "description": "A custom inquiry Block",
+  "category": "sms-blocks",
+  "icon": "email-alt",
+  "keywords": [
+    "inquiry",
+    "contact",
+    "sms"
+  ],
+  "version": "1.0.0",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "script": [
+    "file:../build/block.js"
+  ],
+  "style": [
+    "file:../build/style-block.css"
+  ],
+  "editorStyle": [
+    "file:../build/block.css"
+  ],
+  "supports": {
+    "align": false,
+    "mode": "auto",
+    "jsx": true,
+    "multiple": true
+  },
+  "textdomain": "sms"
+}

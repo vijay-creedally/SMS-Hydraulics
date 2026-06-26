@@ -1,0 +1,134 @@
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/base/mixins";
+
+
+.services {
+  position: relative;
+  padding: 5rem 0;
+  color: $white;
+  overflow: hidden;
+
+  &__video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 0, 7, 0.9);
+    z-index: 1;
+  }
+
+  &__wrapper{
+    border: 0.125rem solid #EFEFEF;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 2.5rem;
+    background: rgba(2, 0, 7, 0.8);
+    margin: 1.25rem;
+    gap:5rem !important;
+
+     @include media-up(xl) {
+      flex-direction: row;
+      padding: 5rem 5.9375rem;
+      gap: 2.5rem !important
+    }
+
+    > .services__info {
+      flex: 1;
+
+      .services__title {
+        margin: 0;
+        padding-bottom: 1.25rem;
+        font-weight: 300;
+        line-height: 1.4;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+		    color: $white;
+
+         @include media-up(xl) {
+            letter-spacing: 0.6875rem;
+          }
+
+      }
+
+      .services__description {
+        font-size: $paragraph;
+        max-width: 26.5rem;
+        font-weight: 300;
+        letter-spacing: 0.125rem;
+        margin: 0;
+        line-height: 1.75;
+      }
+    }
+
+    > .services__list-wrapper {
+      display: flex;
+      gap: 1.25rem;
+      flex-direction: column;
+
+       @include media-up(lgx) {
+        flex-direction: row;
+        gap:2.5rem;
+      
+        }
+
+
+      .services__items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        .services__item {
+          position: relative;
+          padding-left: 2.5rem;
+          font-size: $p-font-size;
+          font-weight: 700;
+          letter-spacing: 0.0625rem;
+          line-height: 1.4;
+          word-break: break-word;
+
+           	@include media-up(xl) {
+            	font-size: $Sub-Heading-two;
+        	}
+
+
+        	&::before {
+          	  content: "";
+          	  position: absolute;
+          	  left: 0;
+          	  top: 0.625rem;
+          	  transform: translateY(-50%);
+          	  width: 1.25rem;
+          	  height: 1.25rem;
+          	  background-image: url('/assets/images/services-Item-icon.svg');
+          	  background-size: contain;
+          	  background-repeat: no-repeat;
+
+          	  @include media-up(xl) {
+          	      top: 0.875rem;
+        		}
+          	}
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,168 @@
+@import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/base/mixins';
+
+.hero-primary {
+    width: 100%;
+    align-items: center;
+    background: $grey-1;
+    position: relative;
+    overflow: hidden;
+    padding-top: 18.75rem;
+    padding-bottom: 10.625rem;
+    filter: drop-shadow(0 4px 54px rgba(0, 0, 0, 0.75));
+
+    @include media-up(lgx) {
+        height: auto;
+        padding-top: 30rem;
+        padding-bottom: 11.25rem;
+    }
+
+    &__video,
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(101.61% 59.76% at 50% 0%, $stroke 0%, $grey-1 100%),
+            linear-gradient(234deg, rgba(41, 41, 59, 0.00) 14.56%, $grey-1 90.2%);
+        background-blend-mode: overlay;
+        opacity: 0.85;
+
+        &::after {
+            content: "";
+            width: 100%;
+            position: absolute;
+            height: 100%;
+            background: url('/assets/images/hero-line-bg.svg') no-repeat;
+            background-position: right bottom;
+            left: auto;
+            right: auto;
+            bottom: auto;
+            top: 25%;
+
+            @include media-up(lgx) {
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+    &__content {
+        z-index: 2;
+    }
+
+    &__wrapper {
+        max-width: 62.75rem;
+    }
+
+    &__subtitle {
+        font-size: $h3-font-size;
+        color: $white;
+        font-weight: 300;
+        letter-spacing: 0.6875rem;
+        text-transform: uppercase;
+        margin: 0;
+        font-family: $font-raleway;
+        line-height: 2.625rem;
+        padding-bottom: 2.5rem;
+    }
+
+    &__title,
+    & .wp-block-post-title {
+        font-family: $font-raleway;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 600;
+        letter-spacing: 1.25rem;
+        margin: 0;
+        color: $white;
+        line-height: 1.4;
+        padding-bottom: 2.5rem;
+        text-transform: uppercase;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            max-width: 62.75rem;
+            height: 0.125rem;
+            background: linear-gradient(90deg, rgba(204, 204, 204, 0.00) 10%, rgba(255, 255, 255, 0.30) 49.52%, rgba(204, 204, 204, 0.00) 90%);
+        }
+    }
+
+    &__highlight {
+        color: $white;
+    }
+
+    &__description,
+    & .wp-block-post-excerpt__excerpt {
+        font-size: $p-font-size-xl;
+        font-family: $font-roboto;
+        line-height: 2.1875rem;
+        color: $white;
+        letter-spacing: 0.125rem;
+        font-weight: 300;
+        margin: 0;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+
+    }
+
+    &__button {
+        > a,
+        & .wp-block-button__link {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            color: $white;
+            font-family: $font-raleway;
+            font-size: $p-font-size;
+            text-transform: uppercase;
+            line-height: 1.5rem;
+            padding: 0.75rem 2.5rem;
+            border-radius: 0.3125rem;
+            background: $red-6;
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 0.4rem;
+            cursor: pointer;
+            transition: all 0.8s ease;
+            z-index: 0;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -3.125rem;
+                height: 100%;
+                width: 0;
+                background: darken($red-6, 10%);
+                transform: skew(-60deg);
+                transition: width 1.5s ease-in-out;
+                z-index: -1;
+            }
+
+            &:hover {
+                color: $white;
+                box-shadow: 0 4px 24px 0 rgba(255, 85, 94, 0.40);
+
+                &::after {
+                    width: 200%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+.pagination {
+ 
+    & ul {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        padding: 20px 0;
+        list-style: none;
+
+        & li {
+
+            & a,
+            & span  {
+                padding: 0.5rem 0.875rem;
+                border: 0.0625rem solid $silver;
+                border-radius: 0.25rem;
+                color: $white;
+                text-decoration: none;
+                text-transform: uppercase;
+
+                &.current {
+                    background: $white;
+                    color: $black;
+                    border-color: $white;
+                }
+            }
+        }
+    }
+}

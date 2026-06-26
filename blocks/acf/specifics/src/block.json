@@ -1,0 +1,33 @@
+{
+  "name": "sms/specifics",
+  "title": "Specifics",
+  "description": "A custom specifics block",
+  "category": "sms-blocks",
+  "icon": "editor-ul",
+  "keywords": [
+    "benefits",
+    "icons",
+    "sms"
+  ],
+  "version": "1.0.0",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "script": [
+    "file:../build/block.js"
+  ],
+  "style": [
+    "file:../build/style-block.css"
+  ],
+  "editorStyle": [
+    "file:../build/block.css"
+  ],
+  "supports": {
+    "align": false,
+    "mode": "auto",
+    "jsx": true,
+    "multiple": true
+  },
+  "textdomain": "sms"
+}

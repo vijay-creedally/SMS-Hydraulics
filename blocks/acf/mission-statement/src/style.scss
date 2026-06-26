@@ -1,0 +1,181 @@
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/base/mixins";
+
+.mission {
+  position: relative;
+  background-color: $surface-secondary;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    @include media-up(lg) {
+      gap: 9.75rem;
+    }
+
+    @include media-up(xl) {
+      flex-direction: row;
+    }
+  }
+
+  &__content {
+    width: 100%;
+
+    @include media-up(lgx) {
+      width: 100%;
+      max-width: 33.75rem;
+      padding-top: 7.5rem;
+      padding-bottom: 7.5rem;
+    }
+	@include media-down(lgs) {
+		padding-top: 5rem;
+    }
+  }
+  &__content.non-visuals {
+	  width: 100%;
+	  max-width: 100%;
+  }
+
+  &__subtitle {
+    font-size: $h3-font-size;
+    color: $black;
+    font-family: $font-raleway;
+    font-weight: 300;
+    line-height: 1.4;
+    letter-spacing: 0.6875rem;
+    text-transform: uppercase;
+    margin: 0;
+    padding-bottom: 2.5rem;
+	  @include media-down(md) {
+	  	letter-spacing: 0.25rem;
+	  }
+  }
+
+  &__title {
+    font-size: $h2-font-size;
+    font-family: $font-raleway;
+    letter-spacing: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $black;
+    margin: 0;
+    line-height: 1.4;
+    padding-bottom: 2.5rem;
+
+    @include media-up(lg) {
+      padding-bottom: 5rem;
+    }
+	@include media-down(lgs) {
+		letter-spacing: 0.375rem;
+	}
+  }
+
+  &__description {
+    font-family: $font-roboto;
+    font-size: $h5-font-size;
+    line-height: 1.95;
+    color: $black;
+    font-weight: 300;
+    letter-spacing: 0.125rem;
+    margin: 0;
+    padding-bottom: 2.5rem;
+
+    @include media-up(lg) {
+      padding-bottom: 5rem;
+    }
+  }
+
+  &__highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+
+    & .mission__line {
+      width: 0.25rem;
+      height: 4.1875rem;
+      background-color: $red-5;
+	  @include media-down(lgs) {
+	  	height: 3.1875rem;
+	  }
+    }
+
+    & .mission__tagline {
+      text-transform: uppercase;
+      letter-spacing: 0.75rem;
+      color: $black;
+      font-weight: 600;
+      line-height: 1.4;
+	    max-width: 30.625rem;
+	    width: 100%;
+      margin: 0;
+	    @include media-down(lgs) {
+		    letter-spacing: 0.375rem;
+	    }
+    }
+  }
+
+  &__visuals {
+    width: 100%;
+    position: relative;
+    right: 0;
+
+    @include media-up(lgx) {
+      position: absolute;
+      width: 45%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+  }
+
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__shape {
+    position: absolute;
+    width: 0;
+    height: 0;
+
+    &--blue {
+      left: 1.25rem;
+      top: 1.25rem;
+
+      @include media-up(lg) {
+        left: 3.3308rem;
+        top: 5rem;
+      }
+
+      & img {
+        width: 4.625rem;
+        height: 4.625rem;
+      }
+    }
+
+    &--red {
+      right: 7.5rem;
+      top: -3.375rem;
+
+
+      @include media-up(lg) {
+       right: 11.8125rem;
+        bottom: 11.875rem;
+        top: auto;
+      }
+
+      & img {
+        width: 4.75rem;
+        height: 5.125rem;
+      }
+    }
+  }
+}

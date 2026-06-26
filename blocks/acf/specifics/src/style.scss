@@ -1,0 +1,80 @@
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/base/mixins";
+
+.specifics {
+  padding: 5rem 0;
+
+  		@include media-up (lgx) {
+			padding: 7.5rem 0;
+		}
+
+  	&__grid {
+  	  	display: grid;
+	  	grid-template-columns: 1fr;
+  	  	gap: 2.5rem;
+  	  	text-align: center;
+
+		@include media-up (md) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include media-up (lg) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+  	}
+
+  	&__item {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 1.25rem;
+		@include media-up(mdx) {
+			gap: 2.5rem;
+		}
+	}
+
+  	&__icon img {
+  	  	width: 3rem;
+  	  	height: 3rem;
+		object-fit: contain;
+  	}
+
+  	&__title {
+  	  	font-size: 0.875rem;
+		font-size: $p-font-size-lg;
+		font-family: $font-raleway;  	  	
+		text-transform: uppercase;
+		font-weight: 600;
+		line-height: 1.4;
+  	  	letter-spacing: 0.5rem;
+  	  	color: $black;
+		margin: 0;
+  	}
+
+  	&__value {
+		&-wrapper {
+			> p {
+				display: flex;
+				flex-direction: column;
+				line-height: 1.4;
+				font-family: $font-raleway;
+				text-align: center;
+  		  		font-weight: 800;
+				text-transform: uppercase;
+				font-variant-numeric: lining-nums proportional-nums;
+				margin: 0;
+			}
+		}
+	}
+	&__value {
+		font-size: 5rem;
+  		color: $blue-3;
+	}
+	&__suffix {
+		&--days {
+			font-size: 2.5rem;
+			color: $red-5;
+		}
+	}
+}

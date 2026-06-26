@@ -1,0 +1,30 @@
+{
+    "name": "sms/project-lists-block",
+    "title": "Project Lists",
+    "description": "A custom project lists block.",
+    "category": "sms-blocks",
+    "icon": "grid-view",
+    "keywords": [
+        "sms-block"
+    ],
+    "version": "1.0.0",
+    "script": [
+        "file:../build/block.js"
+    ],
+    "style": [
+        "file:../build/style-block.css"
+    ],
+    "editorStyle": [
+        "file:../build/block.css"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": "auto",
+        "jsx": true,
+        "multiple": true
+    }
+}

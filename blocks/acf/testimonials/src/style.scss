@@ -1,0 +1,159 @@
+@import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/base/mixins';
+
+.testimonial {
+    padding: 5rem 0;
+    background: radial-gradient(88.04% 92.56% at 50% 0%, $stroke 0%, $grey-1 100%);
+    position: relative;
+    overflow: hidden;
+
+    &__wrapper {
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: -2.8125rem;
+            top: 1.5625rem;
+            width: 4.7477rem;
+            height: 5.0624rem;
+            background-image: url('/assets/images/testimonial-icon-bg-blue.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+
+              @include media-up(lgx){
+                left: 0;
+                top: 9.3125rem;
+                width: 4.7477rem;
+                height: 5.0624rem;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;            
+            right: -1.375rem;
+            bottom: -2.75rem;
+            width: 3.0407rem;
+            height: 3.2422rem;
+            background-image: url('/assets/images/testimonial-icon-bg-red.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+
+             @include media-up(lgx){
+                right: 0;
+                bottom: 8.4564rem;
+                width: 3.0407rem;
+                height: 3.2422rem;
+            }
+        }
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 2.5rem;
+
+        img {
+            width: 5.375rem;
+            height: 4.625rem;
+            display: block;
+
+            @include media-down(lg) {
+                width: 3.4375rem; 
+                height: 3rem;
+            }
+        }
+    }
+
+    &__label {
+        color: $white;
+        line-height: 1.4;
+        font-family: $font-raleway;
+        font-weight: 300;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+        margin: 0;
+        padding-bottom: 2.5rem;
+
+         @include media-up(lg){
+           padding-bottom: 5rem;
+           letter-spacing: 11px;
+        }
+
+
+    }
+
+    &__heading {
+        font-weight: 600;
+        font-family: $font-raleway;
+        color: $white;
+        letter-spacing: 0.3125rem;
+        font-size: $h2-font-size;
+        text-transform: uppercase;
+        line-height: 1.4;
+        margin: 0;
+        padding-bottom: 2.5rem;
+
+        @include media-up(lg){
+           letter-spacing: 0.75rem; 
+        }
+
+    }
+
+    &__text {
+        max-width: 100%;
+        font-weight: 300;
+        font-family: $font-roboto;
+        margin: 0 auto;
+        color: $white;
+        line-height: 1.75;
+        padding-bottom: 2.5rem;
+        letter-spacing: 1px;
+
+          @include media-up(lgx){
+           padding-bottom: 5rem;
+           letter-spacing: 2px;
+           max-width: 43.75rem;
+        }
+    }
+
+    &__author {
+        &-name {
+            color: $red-6;
+            font-size: $subheading-font-size;
+            font-weight: 700;
+            letter-spacing: 0.0625rem;
+            margin: 0;
+            padding-bottom: 1.25rem;
+            line-height: 1.25;
+        }
+
+        &-role {
+            color: $white;
+            font-size: $p-font-size;
+            text-transform: uppercase;
+            letter-spacing: 0.3125rem;
+            line-height: 1.4;
+            font-weight: 400;
+            margin: 0;
+
+             @include media-up(lgx){
+               letter-spacing: 0.4375rem;
+            }
+        }
+    }
+}
+
+.single-projects{
+    & .testimonial{
+        padding:5rem 0;
+
+          @include media-down (lgx) {
+                padding:7.5rem 0;
+            }
+        
+    }
+}

@@ -1,0 +1,401 @@
+@import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/base/mixins';
+
+.bespoke {
+    $this: &;
+    position: relative;
+    padding: 3.75rem 0;
+    background: $surface-secondary;
+    overflow: hidden;
+
+    @include media-up(lgx) {
+        padding: 5rem 0 10rem 0;
+    }
+
+    &__content {
+        padding: 9.4375rem 2.5rem 2.5rem 2.5rem;
+        background: $white;
+        height: auto;
+        box-shadow: 0 2.5rem 7.5rem 0 rgba(0, 0, 0, 0.07);
+        width: 100%;
+
+        @include media-down(lgxx) {
+            margin-top: 11.250rem;
+            box-shadow: 0 0.4375rem 3.125rem 0 rgba(0, 0, 0, 0.07);
+        }
+
+        @include media-up(lgxx) {
+            padding: 5rem 5rem 5rem 7.3125rem;
+            width: 70%;
+        }
+
+        & .acf-innerblocks-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        & ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+
+            & li {
+                color: $grey-1;
+                font-family: $font-raleway;
+                font-size: $Sub-Heading-two;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.4;
+                letter-spacing: 0.0625rem;
+                margin-bottom: 1.25rem;
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                gap: 1.25rem;
+
+                &::before {
+                    content: "";
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'%3E%3Cpath d='M8 11L10 13L14 9M21 11C21 16.5228 16.5228 21 11 21C5.47715 21 1 16.5228 1 11C1 5.47715 5.47715 1 11 1C16.5228 1 21 5.47715 21 11Z' stroke='%23263374' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    display: block;
+                    background-repeat: no-repeat;
+                    background-size: 100%;
+                    min-width: 1.25rem;
+                }
+            }
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+
+        #{$this}__visuals {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+
+            @include media-down(lgxx) {
+                height: 50%;
+            }
+
+            @include media-down(md) {
+                height: 38%;
+            }
+
+            @include media-down(sm) {
+                height: 25%;
+            }
+
+            #{$this}__images {
+                position: absolute;
+                top: -1.875rem;
+                left: -1.5rem;
+                width: 32.5919rem;
+                transform: rotate(-3.915deg);
+
+                @include media-down(lgxx) {
+                    width: 12.1174rem;
+                    left: 4%;
+                    height: 18.75rem;
+                }
+                  @include media-down(sm) {
+                       height: 15.625rem;
+                    }
+            }
+
+            #{$this}__vector {
+
+                &--blue {
+                    width: 6.9874rem;
+                    height: 7.4504rem;
+
+                    @include media-down(lgxx) {
+                        width: 2.3767rem;
+                        height: 2.5342rem;
+                        position: absolute;
+                        left: 7%;
+                    }
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                &--red {
+                    width: 4.8212rem;
+                    height: 5.1406rem;
+                    transform: rotate(16.755deg);
+                    position: absolute;
+                    bottom: -5.625rem;
+                    left: 15.25rem;
+
+                    @include media-down(lgxx) {
+                        width: 1.6399rem;
+                        height: 1.7485rem;
+                        bottom: auto;
+                        top: 16.875rem;
+                        left: 9.375rem;
+                    }
+
+                    @include media-down(md) {
+                        left: 22%;
+                    }
+
+                    @include media-down(sm) {
+                        left: 8.125rem;
+                        bottom: auto;
+                        top: 15.625rem;
+                    }
+
+                    & img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        #{$this}__images-wrapper {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            -webkit-mask-image: url("/assets/images/left-masking-image.png");
+            mask-image: url("/assets/images/left-masking-image.png");
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-position: center;
+            mask-position: center;
+
+                    & img{
+                        width: 100%;
+                        height: 130%;
+                        -o-object-fit: cover;
+                        object-fit: cover;
+                        -o-object-position: center;
+                        object-position: center;
+
+                        @include media-up(lgxx) {
+                                width: 100%;
+                                height: 130%;
+                                -o-object-fit: cover;
+                                object-fit: cover;
+                                -o-object-position: 33% bottom;
+                                object-position: 35% -10.625rem;
+                        }
+                    }
+        }
+
+        &--right {
+            justify-content: flex-start; 
+          
+            #{$this}__visuals {
+                position: absolute;
+                left: auto;
+                right: 0;
+                top: 0;
+
+                @include media-down(lgs) {
+                    height: 50%;
+                }
+
+                @include media-down(md) {
+                    height: 35%;
+                }
+
+                @include media-down(sm) {
+                    height: 28%;
+                }
+
+                #{$this}__images-wrapper {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    display: block;
+                    -webkit-mask-image: url("/assets/images/right-side-vector.svg");
+                    mask-image: url("/assets/images/right-side-vector.svg");
+                    -webkit-mask-repeat: no-repeat;
+                    mask-repeat: no-repeat;
+                    -webkit-mask-size: contain;
+                    mask-size: contain;
+                    -webkit-mask-position: center;
+                    mask-position: center;
+
+                    & img{
+                        width: 100%;
+                        height: 130%;
+                        -o-object-fit: cover;
+                        object-fit: cover;
+                        -o-object-position: center;
+                        object-position: center;
+
+                        @include media-up(lgxx) {
+                                width: 100%;
+                                height: 130%;
+                                -o-object-fit: cover;
+                                object-fit: cover;
+                                -o-object-position: 33% bottom;
+                                object-position: 35% -10.625rem;
+                        }
+                    }
+                }
+
+                #{$this}__images {
+                    position: absolute;
+                    top: -4%;
+                    left: auto;
+                    right:7%;
+                    width: 27.2712rem;
+                    transform: unset;
+
+                    @include media-down(sm) {
+                       height: 18.75rem;
+                    }
+
+                    @include media-down(lgs) {
+                        width: 12.1174rem;
+                        right: 4%;
+                    }
+
+                    @include media-up(lgs) {
+                        right: -0.4375rem;
+                    }
+
+                    @include media-up(xl) {
+                        right:7%;
+                    }
+                }   
+
+                #{$this}__vector {
+
+                    &--blue {
+                        width: 3.9671rem;
+                        height: 4.2299rem;
+                        position: absolute;
+                        right: 17%;
+                        transform: rotate(231deg);
+                        top: -8%;
+
+                        @include media-down(lgxx) {
+                            width: 1.7636rem;
+                            height: 1.8805rem;
+                            right: 15%;
+                            left: auto;
+                        }
+
+                        @include media-down(md) {
+                            right: 15%;
+                        }
+
+                        @include media-down(sm) {
+                            right: 20%;
+                        }
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    &--red {
+                        width: 4.8212rem;
+                        height: 5.1406rem;
+                        transform: rotate(34deg);
+                        position: absolute;
+                        bottom: 40%;
+                        right: 25%;
+                        left: auto;
+
+                        @include media-down(lgxx) {
+                            width: 2.1433rem;
+                            height: 2.2854rem;
+                            right: 25%;
+                            bottom: auto;
+                            left: auto;
+                            top: 8.1875rem;
+                        }
+
+                        @include media-down(lgs) {
+                            right: 20%;
+                        }
+
+                        @include media-down(md) {
+                            right: 24%;
+                            bottom: 40%;
+                        }
+
+                        @include media-down(sm) {
+                            right: 7.5rem;
+                            top: 7.5rem;
+                        }
+
+                        & img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__title,
+    & .wp-block-heading {
+        letter-spacing: 0.3125rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: $h2-font-size;
+        color: $grey-1;
+        line-height: 1.4;
+        margin: 0;
+        padding-bottom: 2.5rem;
+
+        @include media-up(lgx) {
+            padding-bottom: 5rem;
+            letter-spacing: 0.75rem;
+        }
+    }
+
+    &__intro {
+        font-size: $h5-font-size;
+        font-family: $font-roboto;
+        font-weight: 300;
+        color: $grey-1;
+        margin: 0;
+        line-height: 1.75;
+        letter-spacing: 0.0625rem;
+        padding-bottom: 1.25rem;
+
+        @include media-up(lgx) {
+            padding-bottom: 2.5rem;
+            letter-spacing: 0.125rem;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+    }
+
+    &__details{
+        font-size: $paragraph;
+        font-family: $font-roboto;
+        font-weight: 300;
+        margin: 0;
+        color: $grey-1;
+        line-height: 1.75;
+        letter-spacing: 0.125rem;
+    }
+}

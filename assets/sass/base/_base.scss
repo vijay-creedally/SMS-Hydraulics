@@ -1,0 +1,58 @@
+@view-transition {
+	navigation: auto;
+}
+
+html, body {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: $font-roboto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+nav ul {
+	list-style: none;
+	padding: 0;
+}
+
+p + p {
+	margin-top: var(--wp--style--block-gap);
+}
+
+
+/* =======================================
+	 CONTAINER
+======================================= */
+.container {
+	width: 100%;
+	max-width: $container-max-width;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: $container-padding-x;
+	padding-right: $container-padding-x;
+	box-sizing: border-box;
+
+	// Responsive adjustments
+	@include media-up(sm) {
+	}
+
+	@include media-up(xxl) {
+		padding-left: 80px;
+		padding-right: 80px;
+
+		max-width: $container-max-width;
+	}
+}
+
+/* =======================================
+	 OPTIONAL: FLUID CONTAINER
+======================================= */
+.container-fluid {
+	width: 100%;
+	padding-left: $container-padding-x;
+	padding-right: $container-padding-x;
+	margin-left: auto;
+	margin-right: auto;
+}

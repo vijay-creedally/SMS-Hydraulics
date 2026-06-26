@@ -1,0 +1,553 @@
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/base/mixins";
+
+.inquiry {
+    position: relative;
+    padding: 3.75rem 0;
+    background: url("/assets/images/inquiry-bg.png") no-repeat;
+    background-size: cover;
+
+    &__video,
+    &__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+    
+    &__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(2, 0, 7, 0.80) 0%, rgba(2, 0, 7, 0.80) 100%);
+
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    & .container {
+        position: relative;
+    }
+
+    &__inner {
+        display: flex;
+        gap: 2.5rem;
+        flex-direction: column;
+        padding: 5rem 1.25rem;
+        border: 0.0625rem solid $stroke;
+        background: rgba(2, 0, 7, 0.50);
+        box-shadow: 0 24px 34px 0 rgba(0, 0, 0, 0.93);
+
+         @include media-up(lgx) {
+            flex-direction: row;
+            padding: 5rem 7.25rem;
+
+        }
+    }
+
+    &__left {
+        width: 100%;
+
+        @include media-up(lgx) {
+           width: 50%;
+        }
+    }
+
+    &__title {
+        font-family: $font-raleway;
+        text-transform: uppercase;
+        letter-spacing: 0.75rem;
+        font-weight: 600;
+        color: $white;
+        line-height: 1.4;
+        margin: 0;
+        padding-bottom: 2.5rem;
+    }
+
+    &__heading {
+        font-family: $font-raleway;
+        font-size: $subheading-font-size;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: 0.0625rem;
+        color: $white;
+        margin: 0;
+        padding-bottom: 1.25rem;
+    }
+
+    &__desc {
+        color: $white;
+        margin: 0;
+        font-weight: 300;
+        font-size: $h6-font-size;
+        max-width: 27.9375rem;
+        letter-spacing: 0.125rem;
+        margin: 0;
+        padding-bottom: 1.25rem;
+    }
+
+    &__col {
+        &--inquiry {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9375rem;
+
+            &-link {
+                color: $white;
+                font-family: $font-roboto;
+                text-decoration: none;
+                font-size: $h5-font-size;
+                display: flex;
+                font-weight: 300;
+                gap: 0.625rem;
+                border-bottom: 0.125rem solid transparent;
+                transition: all 0.6s ease;
+
+                &:hover {
+                    border-color: $white;
+                }
+            }
+
+            & img {
+                width:  1rem;
+                height: 1rem;
+            }
+
+            &-item {
+                display: flex;
+                gap: 0.625rem;
+                align-items: anchor-center;
+
+                 @include media-up(lgx) {
+                    flex-direction: row;
+                    display: flex;
+                    gap: 0.625rem;
+                    align-items: center; 
+                
+                }
+                 &-inner{
+                    display: flex;
+                    gap:0.625rem;
+                    align-items: baseline;
+                    flex-direction: column;
+
+                     @include media-up(lgx) {
+                        flex-direction: row;
+                    }
+                
+                }
+
+            }
+
+            &-label {
+                color: $grey-6;
+                font-family: $font-raleway;
+                font-size: $Sub-Heading-two;
+                font-weight: 700;
+                line-height: 1.5625rem;
+                letter-spacing: 0.0625rem;
+            }
+
+            &-icon {
+                padding: 0.625rem;
+                border-radius: 0.3125rem;
+                background: $red-6;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            &-info {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                align-items: center;
+
+                @include media-up(lg) {
+                    gap: 0.625rem;
+                    flex-wrap: nowrap;
+                }
+            }
+        }
+    }
+
+    &__form {
+        width: 100%;
+
+        @include media-up(lgx) {
+           width: 50%;
+
+        }
+
+        &-title {
+            margin: 0;
+            color: $white;
+            font-size: $subheading-font-size;
+            font-family: $font-raleway;
+            font-weight: 700;
+            letter-spacing: 0.0625rem;
+            line-height: 1.25;
+            padding-bottom: 1.25rem;
+            padding-top: 0;
+
+            @include media-up(lgx) {
+            padding-top: 4.375rem;
+            }
+        }
+
+
+        & .gform_heading{
+            display: none;
+        }
+
+        & input {
+            border-radius: 0.3125rem !important;
+            border: 0.125rem solid $stroke;
+            background: rgba(2, 0, 7, 0.80) !important;
+            padding: 0.75rem 1.25rem !important;
+            border: $stroke;
+            // text-transform: lowercase !important;
+            height: 3.75rem;
+            padding-left: 3.375rem !important;
+            color: $white !important;
+
+            &::placeholder {
+                text-transform: uppercase;
+                color: $white;
+            }
+        }
+
+        input[type="text"]:-webkit-autofill,
+        input[type="email"]:-webkit-autofill,
+        textarea:-webkit-autofill,
+        input[type="text"]:-webkit-autofill:hover,
+        input[type="email"]:-webkit-autofill:hover,
+        textarea:-webkit-autofill:hover,
+        input[type="text"]:-webkit-autofill:focus,
+        input[type="email"]:-webkit-autofill:focus,
+        textarea:-webkit-autofill:focus,
+        input[type="text"]:-webkit-autofill:active,
+        input[type="email"]:-webkit-autofill:active,
+        textarea:-webkit-autofill:active {
+            -webkit-text-fill-color: white !important;
+            transition: background-color 9999s ease-in-out 0s;
+            -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+            box-shadow: 0 0 0 1000px transparent inset !important;
+            background-color: transparent !important;
+        }
+
+        & .your-name {
+            .ginput_container {
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+                box-sizing: border-box;
+
+                &::before {
+                    content: "";
+                    position: absolute !important;
+                    top: 50% !important;
+                    left: 1rem !important;
+                    transform: translateY(-50%) !important;
+                    width: 1.5rem !important;
+                    height: 1.5rem !important;
+                    background-size: contain !important;
+                    background-repeat: no-repeat !important;
+                    background-image: url('/assets/images/you-name.svg') !important;
+
+                }
+
+                input {
+                    font-size: $h6-font-size !important;
+                    font-weight: 700 !important;
+                    // text-transform: capitalize !important;
+                    letter-spacing: 0.0625rem !important;
+                    line-height: 1.4;
+                    height: 3.75rem;
+                    border-color: $stroke;
+                    color: $white !important;
+
+                     @include media-up(lgx) {
+                        letter-spacing: 0.0625rem !important;
+                        font-family: $font-raleway;
+                        font-weight: 700 !important;
+                        line-height: 1.4;
+                        font-size: 1.125rem !important;
+                    }
+
+                }
+
+                &:focus {
+                    outline: none !important;
+                    border: 0.125rem solid $blue-5;
+                    box-shadow: none !important;
+                }
+            }
+        }
+
+        & .gfield {
+          position: relative;
+          > .gfield_label {
+            position: absolute;
+            top: -7px;
+            left: 2.375rem;
+            text-transform: uppercase;
+            z-index: 2;
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            vertical-align: middle;
+            padding: 1rem;
+            overflow: hidden;
+            letter-spacing: 0.3125rem;
+            font-size: $p-font-size;
+            font-weight: 400;
+            color: $white;
+            text-align: start;
+            text-overflow: ellipsis;
+            pointer-events: none;
+            border: 0.0625rem solid transparent;
+            transform-origin: 0 0;
+            transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out, color 0.3s ease-in-out;
+
+              @include media-up(lgx) {
+                      letter-spacing: 0.4375rem;
+                      top: 0;
+                    }
+
+                .gfield_required {
+                    display: none;
+                }
+          }
+        }
+
+        & .inquiry__field-has-focus {
+          > .gfield_label {
+            transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+            font-size: 0.625rem;
+            color: $white;
+            padding-bottom: 2rem;
+            opacity: 0.7;
+            top: 0;
+          }
+        }
+
+
+        & .your-email {
+            .ginput_container {
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+
+                &::before {
+                    content: "";
+                    position: absolute !important;
+                    top: 50% !important;
+                    left: 1rem !important;
+                    transform: translateY(-50%) !important;
+                    width: 1.5rem !important;
+                    height: 1.5rem !important;
+                    background-size: contain !important;
+                    background-repeat: no-repeat !important;
+                    background-image: url('/assets/images/your-email-icon.svg') !important;
+
+                }
+
+                input {
+                    font-size: $h6-font-size !important;
+                    font-weight: 700 !important;
+                    // text-transform: capitalize !important;
+                    letter-spacing: 0.0625rem !important;
+                    border-color: $stroke;
+                    height: 3.75rem;
+                    line-height: 1.4;
+                    color: $white !important;
+
+                    @include media-up(lgx) {
+                        letter-spacing: 0.0625rem !important;
+                        font-family: $font-raleway;
+                        font-weight: 700 !important;
+                        line-height: 1.4;
+                        font-size: 1.125rem !important;
+                    }
+                }
+
+                &:focus {
+                    outline: none !important;
+                    border: 0.125rem solid $blue-5;
+                    box-shadow: none !important;
+                }
+            }
+        }
+
+        & .your-number {
+            .ginput_container {
+                position: relative !important;
+                display: flex !important;
+                align-items: center !important;
+
+                &::before {
+                    content: "";
+                    position: absolute !important;
+                    top: 50% !important;
+                    left: 1rem !important;
+                    transform: translateY(-50%) !important;
+                    width: 1.5rem !important;
+                    height: 1.5rem !important;
+                    background-size: contain !important;
+                    background-repeat: no-repeat !important;
+                    background-image: url('/assets/images/your-number.svg') !important;
+
+                }
+
+                input {
+                  font-size: $h6-font-size !important;
+                  font-weight: 700 !important;
+                  letter-spacing: 0.0625rem !important;
+                  border-color: $stroke;
+                  height: 3.75rem;
+                //   text-transform: capitalize !important;
+                  line-height: 1.4;
+                  @include media-up(lgx) {
+                        letter-spacing: 0.0625rem !important;
+                        font-family: $font-raleway;
+                        font-weight: 700 !important;
+                        line-height: 1.4;
+                        font-size: 1.125rem !important;
+                  }
+                }
+
+                &:focus {
+                  outline: none !important;
+                  border: 0.125rem solid $blue-5;
+                  box-shadow: none !important;
+                  transform: translateY(-2px) scale(1.02) !important;
+                }
+            }
+
+        }
+
+        & .your-message {
+            .ginput_container {
+                position: relative !important;
+
+                &::before {
+                    content: "";
+                    position: absolute !important;
+                    top: 10% !important;
+                    left: 1rem !important;
+                    transform: translateY(-50%) !important;
+                    width: 1.5rem !important;
+                    height: 1.5rem !important;
+                    background-size: contain !important;
+                    background-repeat: no-repeat !important;
+                    background-image: url('/assets/images/your-message.svg') !important;
+                    pointer-events: none;
+                }
+
+                textarea {
+                    font-size: $h6-font-size !important;
+                    font-weight: 700 !important;
+                    // text-transform: capitalize !important;
+                    letter-spacing: 0.0625rem !important;
+                    line-height: 1.4;
+                    padding: 1.5rem 1.25rem 0.75rem 3.5rem !important;
+                    border-radius: 0.3125rem !important;
+                    background: rgba(2, 0, 7, 0.80) !important;
+                    border-color: $stroke;
+                    color: $white !important;
+                    resize: none !important;
+                    word-break: break-all;
+
+                      @include media-up(lgx) {
+                         letter-spacing: 0.0625rem !important;
+                        font-family: $font-raleway;
+                        font-weight: 700 !important;
+                        line-height: 1.4;
+                        font-size: 1.125rem !important;
+                    }
+                }
+
+                textarea:focus {
+                    outline: none !important;
+                    border: 0.125rem solid $blue-5;
+                    box-shadow: none !important;
+                }
+            }
+        }
+
+        & .gform_wrapper {
+            & .gform-footer {
+                & .gform_button {
+                    display: inline-block !important;
+                    position: relative !important;
+                    overflow: hidden !important;
+                    cursor: pointer !important;
+                    color: $white !important;
+                    background: $red-6 !important;
+                    font-family: $font-raleway !important;
+                    font-size: $p-font-size !important;
+                    font-weight: 800 !important;
+                    text-transform: uppercase !important;
+                    letter-spacing: 0.4rem !important;
+                    padding: 0.75rem 2.5rem !important;
+                    line-height: 1.5 !important;
+                    border-radius: 0.3125rem !important;
+                    border: none !important;
+                    transition: all 0.8s ease !important;
+                    z-index: 0 !important;
+
+                    &:focus,
+                    &:focus-visible,
+                    &:active {
+                        outline: none !important;
+                        box-shadow: none !important;
+                        border: none !important;
+                    }
+
+                    &::after {
+                        content: "" !important;
+                        position: absolute !important;
+                        top: 0 !important;
+                        left: -3.75rem !important;
+                        height: 100% !important;
+                        width: 0 !important;
+                        background: darken($red-6, 10%) !important;
+                        transform: skew(-60deg) !important;
+                        transition: width 1.5s ease-in-out !important;
+                        z-index: -1 !important;
+                    }
+
+                    &:hover {
+                        color: $white !important;
+                        box-shadow: 0 0.25rem 1.5rem rgba(255, 85, 94, 0.40) !important;
+
+                        &::after {
+                            width: 250% !important;
+                        }
+                    }
+                }
+            }
+
+        }
+        & .gfield_validation_message{
+            font-family: $font-raleway !important;
+            font-size: $p-font-size-sm !important;
+            line-height: 1.7 !important;
+        }
+
+
+        .ginput_container input:focus {
+            outline: none !important;
+            border: 0.125rem solid $blue-5;
+        }
+
+
+        & .gform_fields {
+            gap: 1.25rem !important;
+        }
+
+    }
+}

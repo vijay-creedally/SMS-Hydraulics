@@ -1,0 +1,190 @@
+@import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/base/mixins';
+
+.credibility {
+  padding: 7.5rem 0;
+  background-color: $surface-secondary;
+  font-family: $font-raleway;
+
+  &::before{
+    content: "";
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    top: -5rem;
+    background: url('/assets/images/credibility-bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include media-up(xl){
+        width: 9.75rem;
+        height: 10.4375rem;
+        bottom: 0;
+        left: auto;
+        right: 0;
+        top: -10.4375rem; 
+        background-size: auto;
+    }
+  }
+
+  &.hide-curve {
+
+    &::before {
+      content: unset;
+    }
+  }
+
+  &__wrapper{
+    max-width: 70rem;
+    margin: 0 auto;
+
+    & .acf-innerblocks-container {
+
+      & p {
+        color: $black;
+        text-align: left;
+        font-family: $font-roboto;
+        font-size: $h5-font-size;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1.75;
+        letter-spacing: 0.0625rem;
+        margin-bottom: 1rem;
+
+         @include media-up(xl) {
+          letter-spacing: 0.125rem;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &__title {
+    font-size: $h3-font-size;
+    text-align: left;
+    font-family: $font-raleway;
+    padding-bottom: 2.5rem;
+    @include media-up(xl) {
+        padding-bottom: 5rem;
+    }
+  }
+
+  &__text {
+    font-family: $font-roboto;
+    letter-spacing: 0.0625rem;
+
+    @include media-up(lgx) {
+        letter-spacing: 0.125rem;
+    }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    row-gap: 6.25rem;
+    column-gap: 6.25rem;
+    padding-top: 5rem;
+
+    @include media-up(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-up(lgx) {
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      padding-top: 8.125rem;
+    }
+
+  }
+
+  &__stat {
+    text-align: center;
+  }
+
+  &__number {
+    font-size: 5rem;
+    font-weight: 800;
+    color: $blue-3;
+    line-height: 7rem;
+    display: inline-block;
+    font-family: $font-raleway;
+    font-variant-numeric: lining-nums proportional-nums;
+  }
+
+  &__prefix{
+    font-size: 5rem;
+    font-weight: 800;
+    color: $blue-3;
+    line-height: 7rem;
+    display: inline-block;
+  }
+
+  &__plus,
+  &__suffix,
+  &__symbol {
+    font-size: 5rem;
+    font-weight: 800;
+    color: $red-5;
+    line-height: 7rem;
+    vertical-align: sub;
+
+     &-middle{
+       font-size: 5rem;
+      font-weight: 800;
+      color: $red-5;
+      line-height: 7rem;
+      display: inline-block;
+    }
+  }
+
+  &__label {
+    font-size: $fontsize-base;
+    font-family: $font-raleway;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    font-weight: 600;
+    color: $black;
+    margin: 0;
+    line-height: 1.5625rem;
+    text-align: center;
+  }
+  &__logos {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 1.875rem;
+    column-gap: 1.875rem;
+    align-items: center;
+    justify-items: center;
+    padding-top: 5rem;
+
+    @include media-up(md) {
+       grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media-up(lgx) {
+        grid-template-columns: repeat(4, 1fr);
+        padding-top: 7.5rem;
+        row-gap: 3.75rem;
+        column-gap: 3.75rem;
+    }
+  }
+   &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+    }
+   }
+
+}

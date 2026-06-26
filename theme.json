@@ -1,0 +1,191 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"link": true,
+			"defaultGradients": false,
+			"defaultPalette": false,
+			"palette": [
+				{
+					"name": "Primary",
+					"slug": "primary",
+					"color": "#000000"
+				},
+				{
+					"name": "Secondary",
+					"slug": "secondary",
+					"color": "#020007"
+				},
+				{
+					"name": "Bright Gray",
+					"slug": "bright-gray",
+					"color": "#EFEFEF"
+				},
+				{
+					"name": "White",
+					"slug": "white",
+					"color": "#FFFFFF"
+				},
+				{
+					"name": "Black",
+					"slug": "black",
+					"color": "#000000"
+				},
+				{
+					"name": "Blue",
+					"slug": "blue",
+					"color": "#263374"
+				},
+				{
+					"name": "Red",
+					"slug": "red",
+					"color": "#D4121D"
+				},
+				{
+					"name": "Grey",
+					"slug": "grey",
+					"color": "#ECECEC"
+				},
+				{
+					"name": "Yankees Blue",
+					"slug": "yankees-blue",
+					"color": "#1D223D"
+				},
+				{
+					"name": "Patick Blue",
+					"slug": "patick-blue",
+					"color": "#263374"
+				},
+				{
+					"name": "Ultramarine Blue",
+					"slug": "ultramarine-blue",
+					"color": "#395AFF"
+				},
+				{
+					"name": "Picton Blue",
+					"slug": "picton-blue",
+					"color": "#47ACFF"
+				},
+				{
+					"name": "Arsenic",
+					"slug": "arsenic",
+					"color": "#423C47"
+				},
+				{
+					"name": "Spanish Gray",
+					"slug": "spanish-gray",
+					"color": "#9A979F"
+				},
+				{
+					"name": "Light Gray",
+					"slug": "light-gray",
+					"color": "#D2D1D6"
+				},
+				{
+					"name": "Chocolate Brown",
+					"slug": "chocolate-brown",
+					"color": "#400B0E"
+				},
+				{
+					"name": "Blood",
+					"slug": "blood",
+					"color": "#690B11"
+				},
+				{
+					"name": "Sunset Orange",
+					"slug": "sunset-orange",
+					"color": "#FF555E"
+				},
+				{
+					"name": "Deep Amethyst",
+					"slug": "deep-amethyst",
+					"color": "#928CA0"
+				},
+				{
+					"name": "Pastel Purple",
+					"slug": "pastel-purple",
+					"color": "#ACA6B8"
+				},
+				{
+					"name": "Languid Lavender",
+					"slug": "languid-lavender",
+					"color": "#DAD2E2"
+				},
+				{
+					"name": "Bright Gray",
+					"slug": "bright-gray",
+					"color": "#EBE5F0"
+				},
+				{
+					"name": "Russian Violet",
+					"slug": "russian-violet",
+					"color": "#291743"
+				},
+				{
+					"name": "Spanish Violet",
+					"slug": "spanish-violet",
+					"color": "#452674"
+				},
+				{
+					"name": "Violet",
+					"slug": "violet",
+					"color": "#7200BF"
+				},
+				{
+					"name": "Lavender Indigo",
+					"slug": "lavender-indigo",
+					"color": "#A64EFF"
+				}
+			]
+		},
+		"layout": {
+			"contentSize": "100%",
+			"wideSize": "1512px"
+		},
+		"spacing": {
+			"defaultSpacingSizes": false,
+			"spacingSizes": [
+				{
+					"name": "Small",
+					"slug": "small",
+					"size": "15px"
+				},
+				{
+					"name": "Medium",
+					"slug": "medium",
+					"size": "30px"
+				},
+				{
+					"name": "Large",
+					"slug": "large",
+					"size": "60px"
+				}
+			]
+		},
+		"typography": {
+			"fontFamilies": [],
+			"fontSizes": [],
+			"textDecoration": true,
+			"defaultFontSizes": false,
+			"customFontSize": false
+		},
+		"useRootPaddingAwareAlignments": true
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--background)",
+			"text": "var(--wp--preset--color--grey)"
+		},
+		"spacing": {
+			"padding": {
+				"top": "var(--wp--preset--spacing--30)",
+				"right": "var(--wp--preset--spacing--30)",
+				"bottom": "var(--wp--preset--spacing--30)",
+				"left": "var(--wp--preset--spacing--30)"
+			},
+			"blockGap": "var(--wp--preset--spacing--15)"
+		}
+	}
+}

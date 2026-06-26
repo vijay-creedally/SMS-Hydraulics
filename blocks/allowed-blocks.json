@@ -1,0 +1,105 @@
+{
+  "core/paragraph": [
+    "sms/benefits",
+    "sms/bespoke",
+    "sms/careers",
+    "sms/credibility",
+    "sms/cta-panel",
+    "sms/customer-journey",
+    "sms/gallery-with-text",
+    "sms/hero-block-primary",
+    "sms/hero-block-secondary",
+    "sms/hero-block",
+    "sms/inquiry-form",
+    "sms/locations",
+    "sms/mission-statement",
+    "sms/overview",
+    "sms/process",
+    "sms/services",
+    "sms/sms-block",
+    "sms/testimonials",
+    "sms/thank-you"
+  ],
+  "core/heading": [
+    "sms/benefits",
+    "sms/bespoke",
+    "sms/careers",
+    "sms/certifications",
+    "sms/credibility",
+    "sms/cta-panel",
+    "sms/customer-journey",
+    "sms/hero-block-primary",
+    "sms/hero-block-secondary",
+    "sms/hero-block",
+    "sms/inquiry-form",
+    "sms/introduction",
+    "sms/latest-case-studies",
+    "sms/latest-projects",
+    "sms/mission-statement",
+    "sms/overview",
+    "sms/process",
+    "sms/project-lists",
+    "sms/services",
+    "sms/sms-block",
+    "sms/team-lists",
+    "sms/testimonials",
+    "sms/thank-you"
+  ],
+  "core/list": [
+    "sms/benefits",
+    "sms/bespoke",
+    "sms/careers",
+    "sms/services"
+  ],
+  "core/buttons": [
+    "sms/benefits",
+    "sms/cta-panel",
+    "sms/gallery-with-text",
+    "sms/hero-block-primary",
+    "sms/hero-block",
+    "sms/introduction",
+    "sms/thank-you"
+  ],
+  "core/list-item": [
+    "sms/bespoke",
+    "sms/careers",
+    "sms/services"
+  ],
+  "core/image": [
+    "sms/careers",
+    "sms/overview",
+    "sms/testimonials"
+  ],
+  "core/group": [
+    "sms/careers",
+    "sms/cta-panel",
+    "sms/services",
+    "sms/testimonials"
+  ],
+  "core/columns": [
+    "sms/careers",
+    "sms/overview",
+    "sms/services"
+  ],
+  "core/column": [
+    "sms/careers",
+    "sms/overview",
+    "sms/services"
+  ],
+  "core/separator": [
+    "sms/careers"
+  ],
+  "core/post-title": [
+    "sms/hero-block-primary",
+    "sms/hero-block-secondary",
+    "sms/hero-block"
+  ],
+  "core/post-excerpt": [
+    "sms/hero-block-primary",
+    "sms/hero-block-secondary",
+    "sms/hero-block"
+  ],
+  "core/button": [
+    "sms/thank-you"
+  ]
+}

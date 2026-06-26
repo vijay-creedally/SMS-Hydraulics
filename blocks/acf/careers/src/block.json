@@ -1,0 +1,32 @@
+{
+  "name": "sms/careers",
+  "title": "Careers",
+  "description": "Careers block",
+  "category": "sms-blocks",
+  "icon": "admin-generic",
+  "keywords": [
+    "sms"
+  ],
+  "version": "1.0.0",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "script": [
+    "file:../build/block.js"
+  ],
+  "style": [
+    "file:../build/style-block.css"
+  ],
+  "editorStyle": [
+    "file:../build/block.css"
+  ],
+  "supports": {
+    "align": false,
+    "mode": false,
+    "jsx": true,
+    "multiple": true,
+    "anchor": true
+  },
+  "textdomain": "sms"
+}

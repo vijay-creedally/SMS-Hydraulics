@@ -1,0 +1,67 @@
+#dashboard-widgets-wrap {
+    #dashboard-widgets {
+        #postbox-container-1 {
+            width: 100% !important;
+        }
+    }
+}
+
+#tutorial_dashboard_widget .inside {
+    display: grid;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+}
+
+#tutorial_dashboard_widget.closed .inside {
+    display: none;
+}
+
+#tutorial_dashboard_widget .vid-tut {
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 0.0625rem solid #e5e7eb;
+}
+
+#tutorial_dashboard_widget .vid-tut:hover {
+    border-color: #c7d2fe;
+}
+
+#tutorial_dashboard_widget .vid-tut h2 {
+    margin: 0;
+    padding: 1rem 1rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #1f2937;
+    border-bottom: 0.0625rem solid #e5e7eb;
+}
+
+#tutorial_dashboard_widget .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    background: #000;
+}
+
+#tutorial_dashboard_widget .video-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 48rem) {
+
+    #tutorial_dashboard_widget .inside {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    #tutorial_dashboard_widget .vid-tut h2 {
+        font-size: 0.875rem;
+        padding: 0.875rem 1rem;
+    }
+}

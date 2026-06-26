@@ -1,0 +1,33 @@
+{
+  "name": "sms/sectors",
+  "title": "Sectors",
+  "description": "A custom sectors block",
+  "category": "sms-blocks",
+  "icon": "screenoptions",
+  "keywords": [
+    "sectors",
+    "image",
+    "sms"
+  ],
+  "version": "1.0.0",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "script": [
+    "file:../build/block.js"
+  ],
+  "style": [
+    "file:../build/style-block.css"
+  ],
+  "editorStyle": [
+    "file:../build/block.css"
+  ],
+  "supports": {
+    "align": false,
+    "mode": "auto",
+    "jsx": true,
+    "multiple": true
+  },
+  "textdomain": "sms"
+}

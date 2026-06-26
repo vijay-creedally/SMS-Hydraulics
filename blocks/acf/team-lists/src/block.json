@@ -1,0 +1,30 @@
+{
+    "name": "sms/team-lists-block",
+    "title": "Team Lists",
+    "description": "A custom team lists block.",
+    "category": "sms-blocks",
+    "icon": "grid-view",
+    "keywords": [
+        "sms-block"
+    ],
+    "version": "1.0.0",
+    "script": [
+        "file:../build/block.js"
+    ],
+    "style": [
+        "file:../build/style-block.css"
+    ],
+    "editorStyle": [
+        "file:../build/block.css"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": "auto",
+        "jsx": true,
+        "multiple": true
+    }
+}

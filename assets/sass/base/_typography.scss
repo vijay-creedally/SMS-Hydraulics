@@ -1,0 +1,72 @@
+// Font faces
+@font-face {
+	font-family: 'Raleway';
+	src: url('../Fonts/Raleway-VariableFont.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Raleway';
+	src: url('../Fonts/Raleway-Italic-VariableFont.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../Fonts/Roboto-VariableFont.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Roboto';
+	src: url('../Fonts/Roboto-Italic-VariableFont.ttf') format('truetype');
+	font-weight: 100 900;
+	font-style: italic;
+	font-display: swap;
+}
+
+// Base typography settings
+body {
+    font-family: $font-roboto;
+    font-size: $fontsize-base;
+    line-height: $line-height-base;
+    color: $grey-3;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-raleway;
+    line-height: $line-height-heading;
+    margin-bottom: $headings-margin-bottom;
+    font-weight: 600;
+    color: $blue-3;
+}
+
+h1 { font-size: $h1-font-size; }
+h2 { font-size: $h2-font-size; }
+h3 { font-size: $h3-font-size; }
+h4 { font-size: $h4-font-size; }
+h5 { font-size: $h5-font-size; }
+h6 { font-size: $h6-font-size; }
+
+// Paragraphs
+p {
+    font-size: $p-font-size;
+    margin-bottom: $paragraph-margin-bottom;
+    
+    &.lead {
+        font-size: $p-font-size-lg;
+        line-height: 1.6;
+    }
+    
+    &.small {
+        font-size: $p-font-size-sm;
+        line-height: 1.4;
+    }
+}

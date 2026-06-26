@@ -1,0 +1,85 @@
+
+.is-style-sms-primary {
+    & .wp-block-button__link {
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        color: $white;
+        font-family: $font-raleway;
+        font-size: $p-font-size;
+        text-transform: uppercase;
+        line-height: 1.5rem;
+        padding: 0.75rem 2.5rem;
+        border-radius: 0.3125rem;
+        background: $red-6;
+        font-weight: 800;
+        text-decoration: none;
+        letter-spacing: 0.4rem;
+        cursor: pointer;
+        transition: all 0.8s ease;
+        z-index: 0;
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -3.125rem;
+            height: 100%;
+            width: 0;
+            background: darken($red-6, 10%);
+            transform: skew(-60deg);
+            transition: width 1.5s ease-in-out;
+            z-index: -1;
+        }
+        &:hover {
+            color: $white;
+            box-shadow: 0 4px 24px 0 rgba(255, 85, 94, 0.40);
+            &::after {
+                width: 200%;
+            }
+        }
+    }
+}
+.is-style-sms-secondary {
+    & .wp-block-button__link {
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            color: $white;
+            font-family: $font-raleway;
+            font-size: $p-font-size;
+            text-transform: uppercase;
+            line-height: 1.5rem;
+            padding: 0.75rem 2.5rem;
+            border-radius: 0.3125rem;
+            background: transparent;
+            border: 0.125rem solid rgba(255, 255, 255, 0.25);
+            font-weight: 800;
+            text-decoration: none;
+            letter-spacing: 0.4rem;
+            cursor: pointer;
+            transition: all 0.8s ease;
+            z-index: 0;
+            
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: -3.125rem;
+                height: 100%;
+                width: 0;
+                background: darken($red-6, 10%);
+                transform: skew(-60deg);
+                transition: width 1.5s ease-in-out;
+                z-index: -1;
+            
+            &:hover {
+                color: $white;
+                border: 0.125rem solid transparent;
+            
+                &::after {
+                    width: 200%;
+                }
+            }
+        }
+    }
+}

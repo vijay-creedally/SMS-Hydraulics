@@ -1,0 +1,193 @@
+@import "../../../../assets/sass/base/variables";
+@import "../../../../assets/sass/base/mixins";
+
+.benefits {
+	padding: 5rem 0;
+	background-color: $white;
+	overflow: hidden;
+
+	@include media-up(lgx) {
+		padding: 7.5rem 0;
+	}
+
+	@include media-up(xl) {
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url("/assets/images/benefits-left-bg.svg") no-repeat center center;
+			background-size: cover;
+			z-index: 0;
+		}
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		left: -62rem;
+		bottom: -82.0511rem;
+		width: 94.5rem;
+		top: 22%;
+		right: auto;
+		height: 101.3011rem;
+		background: url("/assets/images/benefits-right-bg.svg") no-repeat center center;
+		background-size: auto;
+		z-index: 0;
+
+		@include media-up(sm) {
+			left: auto;
+			bottom: auto;
+			width: 100%;
+			top: auto;
+			right: 0;
+			height: 100%;
+		}
+
+		@include media-up(xl) {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+		}
+	}
+	& mark{
+		padding: 0;
+	}
+
+	&__label {
+		font-size: $h3-font-size;
+		font-family: $font-raleway;
+		padding-bottom: 2.5rem;
+		letter-spacing: 0.25rem;
+		font-weight: 300;
+		z-index: 1;
+
+		@include media-up(xl) {
+			padding-bottom: 5rem;
+			letter-spacing: 0.6875rem;
+		}
+	}
+
+	&__heading {
+		font-family: $font-raleway;
+		padding-bottom: 2.5rem;
+		z-index: 1;
+		position: relative;
+		font-weight: 600;
+		line-height: 1.4;
+		letter-spacing: 0.3125rem;
+
+		@include media-up(xl) {
+			letter-spacing: 0.75rem;
+			padding-bottom: 5rem;
+		}
+		
+		@include media-down(sm) {
+			font-size: 1.375rem;
+		}
+		span {
+			&.mobile-line-break {
+				display: block;
+				margin-bottom: 1.25rem;
+			}
+		}
+	}
+
+	&__card {
+		background-color: $white;
+		box-shadow: 0 2.5rem 7.5rem 0 rgba(0, 0, 0, 0.07);
+		margin: 0 auto;
+		padding: 2.5rem 1.25rem;
+		width: auto;
+		max-width: 51rem;
+		z-index: 99;
+		border: 2px solid $grey-6;
+
+		@include media-up(xl) {
+			padding: 2.5rem;
+			width: 41rem;
+			max-width: 51rem;
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li {
+		position: relative;
+		padding-left: 2.5rem;
+		text-align: left;
+		font-size: $paragraph;
+		&::after {
+			content: "";
+			width: 1.25rem;
+			top: 0.1875rem;
+			left: 0;
+			position: absolute;
+			height: 1.25rem;
+			min-width: 1.25rem;
+			background: url("/assets/images/benefits-icon.svg") no-repeat;
+			background-size: cover;
+		}
+		> a {
+			color: $red-5;
+			text-decoration: underline;
+			font-weight: 700;
+		}
+	}
+
+	&__button {
+		font-family: $font-raleway;
+		font-size: $p-font-size;
+		position: relative;
+		padding: 0.75rem 2.5rem;
+		border-radius: 0.3125rem;
+		background: $red-6;
+		text-decoration: none;
+		cursor: pointer;
+		transition: all 0.8s ease;
+		z-index: 1;
+		margin-top: 2.5rem;
+
+		@include media-up(xl) {
+			margin-top: 5rem;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: -3.125rem;
+			height: 100%;
+			width: 0;
+			background: darken($red-6, 10%);
+			transform: skew(-60deg);
+			transition: width 1.5s ease-in-out;
+			z-index: -1;
+		}
+
+		&:hover {
+			color: $white;
+			box-shadow: 0 0.25rem 1.5rem 0 rgba(255, 85, 94, 0.4);
+
+			&::after {
+				width: 200%;
+			}
+		}
+	}
+
+	& .acf-innerblocks-container {
+		position: relative;
+		z-index: 1;
+	}
+}

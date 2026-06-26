@@ -1,0 +1,27 @@
+{
+    "name": "tex0gen/themesms",
+    "type": "project",
+    "require": {
+        "vinkla/extended-acf": "^14.6",
+        "erusev/parsedown": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tex0gen\\Themesms\\": "src/",
+						"sms\\Theme\\": "inc/plugins"
+        }
+    },
+		"scripts": {
+			"create-block": "sms\\Theme\\BlockGenerator::run",
+			"load-theme": "sms\\Theme\\LoadTheme::run",
+			"post-create-block": [
+				"composer dump-autoload"
+			]
+		},
+    "authors": [
+        {
+            "name": "Steve North",
+            "email": "steve.north@riweb.uk"
+        }
+    ]
+}

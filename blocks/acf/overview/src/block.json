@@ -1,0 +1,33 @@
+{
+  "name": "sms/overview",
+  "title": "Overview",
+  "description": "A custom overview block.",
+  "category": "sms-blocks",
+  "icon": "editor-alignleft",
+  "keywords": [
+    "overview",
+    "text",
+    "sms"
+  ],
+  "version": "1.0.0",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "script": [
+    "file:../build/block.js"
+  ],
+  "style": [
+    "file:../build/style-block.css"
+  ],
+  "editorStyle": [
+    "file:../build/block.css"
+  ],
+  "supports": {
+    "align": false,
+    "mode": false,
+    "jsx": true,
+    "multiple": true
+  },
+  "textdomain": "sms"
+}

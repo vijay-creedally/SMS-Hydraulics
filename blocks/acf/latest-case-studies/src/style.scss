@@ -1,0 +1,277 @@
+@import '../../../../assets/sass/base/variables';
+@import '../../../../assets/sass/base/mixins';
+
+.case-studies {
+  position: relative;
+  padding: 7.5rem 0;
+  background: radial-gradient(170.02% 100% at 50% 0%, #29293B 0%, #020007 100%);
+  color: $white;
+
+  & .container {
+    text-align: center;
+  }
+
+  &__title {
+    color: $white;
+    font-weight: 300;
+    line-height: 2.625rem;
+    font-family: $font-raleway;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    margin: 0;
+    padding-bottom: 2.5rem;
+    text-align: left;
+
+    @include media-up(xl) {
+      letter-spacing: 0.6875rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-bottom: 2.5rem;
+
+    @include media-up(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-up(xl) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    position: relative;
+    background: $white;
+    color: $black;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    width: 100%;
+    transition: transform 0.8s ease, box-shadow 0.8s ease;
+
+    @include media-up(md) {
+      height: 33.9375rem;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      transform: scale(1.02);
+      border-width: 0 0 6.25rem 6.6875rem;
+      border-color: transparent transparent $black transparent;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    &:hover::after {
+      border-color: transparent transparent $black transparent;
+    }
+
+    &:hover {
+      transform: translateY(0);
+
+      .case-studies__content {
+        @include media-up(lgx) {
+          height: 15rem;
+          transform: translateY(-40%);
+        }
+      }
+
+      .case-studies__desc {
+        @include media-up(lgx) {
+          opacity: 1;
+          transform: translateY(0);
+          height: auto;
+        }
+      }
+
+      .case-studies__arrow {
+        @include media-up(lgx) {
+          transform: translateX(20px);
+        }
+      }
+    }
+  }
+
+  @include media-down(lgx) {
+    .case-studies__card:hover {
+      transform: none !important;
+    }
+    .case-studies__card:hover .case-studies__content {
+      transform: none !important;
+      height: auto !important;
+    }
+    .case-studies__card:hover .case-studies__desc {
+      opacity: 1 !important;
+      transform: none !important;
+      height: auto !important;
+    }
+    .case-studies__card:hover .case-studies__image img {
+      transform: none !important;
+    }
+    .case-studies__card:hover .case-studies__arrow {
+      transform: none !important;
+    }
+    .case-studies__card::after {
+      border-color: transparent transparent $rich-black transparent !important;
+    }
+  }
+
+  &__image {
+    flex: 1 1 auto;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease;
+    }
+
+    .case-studies__card:hover & img {
+      transform: translateY(-10px);
+    }
+  }
+
+  &__content {
+    padding: 1.25rem;
+    background: $white;
+    transition: transform 0.8s ease;
+    z-index: 1;
+    bottom: 0;
+    flex: 0 0 auto;
+
+    @include media-up(xl) {
+      padding: 2.5rem;
+    }
+
+    @include media-down(lgs) {
+      height: auto;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5625rem;
+    color: $grey-1;
+    margin: 0;
+    padding-bottom: 2.5rem;
+
+    @include media-up(xl) {
+      letter-spacing: 0.75rem;
+    }
+	@include media-down(lgs) {
+      padding-bottom: 1rem;
+    }
+  }
+
+  &__desc {
+    font-size: $p-font-size-lg;
+    line-height: 2.1875rem;
+    font-weight: 300;
+    letter-spacing: 0.125rem;
+    color: $grey-1;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 0;
+    transform: translateY(10px);
+    transition: max-height 0.6s ease, opacity 0.4s ease, transform 0.6s ease;
+
+    @include media-down(lgx) {
+      height: auto !important;
+      min-height: auto !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  &__link {
+    font-size: $p-font-size;
+    position: absolute;
+    color: $red-5;
+    font-family: $font-roboto;
+    font-weight: 800;
+    letter-spacing: 0.4rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.8s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    z-index: 1;
+
+    @include media-up(xl) {
+      left: 2.5rem;
+    }
+	@include media-down(lgs) {
+		position: unset;
+		margin-bottom: 1rem;
+		padding: 0 1.25rem;
+	}
+  }
+
+  @include media-down(lgx) {
+    .case-studies__link {
+      position: relative !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__arrow {
+    display: inline-block;
+    transition: transform 0.8s ease;
+  }
+
+  &__button {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    color: $white;
+    font-family: $font-raleway;
+    font-size: $p-font-size;
+    text-transform: uppercase;
+    line-height: 1.5rem;
+    padding: 0.75rem 2.5rem;
+    border-radius: 0.3125rem;
+    background: $red-6;
+    font-weight: 800;
+    letter-spacing: 0.4rem;
+    cursor: pointer;
+    z-index: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -50px;
+      height: 100%;
+      width: 0;
+      background: darken($red-6, 10%);
+      transform: skew(-60deg);
+      transition: width 1.5s ease-in-out;
+      z-index: -1;
+    }
+
+    &:hover::after {
+      width: 200%;
+    }
+  }
+}

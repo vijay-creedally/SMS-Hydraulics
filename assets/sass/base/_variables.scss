@@ -1,0 +1,166 @@
+/* start:colours */
+$primary: #0b3f33;
+$primary-rgb: rgb(11, 63, 51);
+$secondary: #A6CC1D;
+$tertiary: #ECE8DE;
+$quaternary: #D3F0E1;
+$quinary: #CDC1A3;
+$accent-1: #205447;
+$success: #00CCFF;
+$info: #1C8C7B;
+$warning: #00CCFF;
+$danger: #00CCFF;
+$light: #E4E4E4;
+$dark: #20211F;
+$white: #ffffff;
+$blue-1 :#e6f0ff;
+$blue-2 :#b3ccff;
+$blue-3 :#1d223d;
+$blue-4: #263374;
+$blue-5 :#395aff;
+$blue-6 :#47acff;
+$stroke : #29293B;
+$grey-1 :#020007;
+$grey-2 :#1a1623;
+$grey-3 :#423c47;
+$grey-4 :#9a979f;
+$grey-5 :#d2d1d6;
+$grey-6 :#efefef;
+$grey-7 :#f5f5f5;
+$grey-8 :#fafafa;
+$red-3 :#400b0e;
+$red-4 :#690b11;
+$red-5 :#d4121d;
+$red-6 :#ff555e;
+$red-7 :#ff8188;
+$warm-grey-1 :#7a7489;
+$warm-grey-2 :#928ca0;
+$warm-grey-3 :#aca6b8;
+$warm-grey-4 :#dad2e2;
+$warm-grey-5 :#ebe5f0;
+$warm-grey-6 :#f7f5f9;
+$warm-grey-7 :#fcfbfc;
+$purple-3 :#291743;
+$purple-4 :#452674;
+$purple-4 :#7200bf;
+$purple-5 :#a64eff;
+$silver: #ccc;
+$silver-1: #909090;
+$silver-2: #aaa;
+$silver-3: #b0b0b0;
+$silver-4: #d9d9d9;
+$silver-5: #e8e8e8;
+$silver-6: #f0f0f0;
+$silver-7: #f7f7f7;
+$silver-8: #fafafa;
+$success: #00CCFF;
+$info: #1C8C7B;
+$warning: #00CCFF;
+$danger: #00CCFF;
+$light: #E4E4E4;
+$dark: #20211F;
+$black: #000000;
+$rich-black: #090910;
+$surface-secondary: #F6F3F9;
+/* end:colours */
+
+/* start:spacing */
+$spacing-sm: 10px;
+$spacing-md: 20px;
+$spacing-lg: 30px;
+$spacing-xl: 40px;
+$spacing-1xl: 60px;
+$spacing-3xl: 80px;
+/* end:spacing */
+
+/* start:fontsize */
+$fontsize-base: 18px;
+$fontsize-xs: 12px;
+$fontsize-sm: 14px;
+
+// Heading sizes (mobile-first with fluid typography)
+$h1-font-size: clamp(32px, calc(1.8rem + 1vw), 48px);	// Fluid: 32px -> 48px
+$h2-font-size: clamp(28px, calc(1.5rem + 0.8vw), 36px);	// Fluid: 28px -> 36px
+$h3-font-size: clamp(20px, calc(1.1rem + 0.65vw), 30px);// Fluid: 20px -> 30px
+$h4-font-size: clamp(18px, calc(1rem + 0.6vw), 24px);	// Fluid: 18px -> 24px
+$h5-font-size: clamp( 16px, calc(16px + (4 * ((100vw - 320px) / 1600))), 20px ); // Fluid: 16px -> 20px
+$h6-font-size: clamp(14px, calc(0.875rem + 0.1vw), 18px);// Fluid: 14px -> 18px
+
+$subheading-font-size: clamp(20px, calc(20px + (4 * ((100vw - 320px) / 1600))), 24px); // Fluid: 20px -> 24px
+$Sub-Heading-two: clamp( 16px, calc(16px + (2 * ((100vw - 320px) / 1600))), 18px ); // Fluid 18px -> 16px
+
+// Paragraph sizes
+$p-font-size-sm: 0.875rem; // 14px
+$p-font-size: 1rem;       // 16px
+$p-font-size-lg: 1.125rem; // 18px
+$p-font-size-xl: 1.25rem; // 20px
+$font-small-paragraph: clamp(12px, 1.2vw, 14px); //
+$paragraph: clamp(14px, calc(14px + (4 * ((100vw - 320px) / 1600))), 16px);
+
+// Line heights
+$line-height-base: 1.5;
+$line-height-heading: 1.2;
+
+$border-radius: 30px;
+$border-radius-normal: 20px;
+
+// Typography
+// Default font-family for the theme. Override in a child theme if needed.
+$font-raleway: 'Raleway', sans-serif;
+$font-roboto: 'Roboto', sans-serif;
+
+// scss-docs-start theme-colors-map
+$theme-colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"success": $success,
+	"info": $info,
+	"warning": $warning,
+	"danger": $danger,
+	"light": $light,
+	"dark": $dark) !default;
+
+// scss-docs-start spacer-variables-maps
+$spacer: 1rem !default;
+$spacers: (
+	0: 0,
+	1: $spacer * .25,
+	2: $spacer * .5,
+	3: $spacer,
+	4: $spacer * 1.5,
+	5: $spacer * 3,
+	) !default;
+
+// scss-docs-start grid-breakpoints
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	lgx: 1025px,
+	xl: 1200px,
+	xxl: 1400px
+);
+
+// scss-docs-start container-max-widths
+$container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	lgx: 1025px,
+	xl: 1140px,
+	xxl: 1512px
+);
+
+$container-max-width: map-get($container-max-widths, xxl) !default;
+
+
+// Grid columns
+$grid-columns: 12;
+$grid-gutter-width: 20px;
+$grid-row-columns: 6;
+
+// Container padding
+$container-padding-x: $grid-gutter-width;
+$headings-margin-bottom: 30px;
+$paragraph-margin-bottom: 30px;

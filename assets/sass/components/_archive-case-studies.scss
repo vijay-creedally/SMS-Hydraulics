@@ -1,0 +1,46 @@
+.archive-case-studies {
+  padding: 7.5rem 0;
+  background: $black;
+    &__header {
+      &-title {
+        color: $white;
+        font-weight: 300;
+        line-height: 2.625rem;
+        font-family: $font-raleway;
+        text-transform: uppercase;
+        letter-spacing: 0.625rem;
+        margin: 0;
+        padding-bottom: 2.5rem;
+        text-align: left;
+      }
+    }
+    &__col {
+        padding: 0 1.25rem!important;
+        margin-bottom: 2.5rem
+    }
+    & .pagination-wrapper {
+        & ul {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding: 20px 0;
+            list-style: none;
+            & li {
+                & a, span {
+                    padding: 0.5rem 0.875rem;
+                    border: 0.0625rem solid $silver;
+                    border-radius: 0.25rem;
+                    color: $white;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
+                & .current {
+                    background: $white;
+                    color: $black;
+                    border-color: $white;
+                }
+            }
+        }
+    }
+}
+

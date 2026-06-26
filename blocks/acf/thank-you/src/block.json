@@ -1,0 +1,31 @@
+{
+  "name": "sms/thank-you",
+  "title": "Thank You",
+  "description": "A custom Thank you block",
+  "category": "sms-blocks",
+  "icon": "smiley",
+  "keywords": [
+    "sms"
+  ],
+  "version": "1.0.0",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "script": [
+    "file:../build/block.js"
+  ],
+  "style": [
+    "file:../build/style-block.css"
+  ],
+  "editorStyle": [
+    "file:../build/block.css"
+  ],
+  "supports": {
+    "align": false,
+    "mode": false,
+    "jsx": true,
+    "multiple": true
+  },
+  "textdomain": "sms"
+}

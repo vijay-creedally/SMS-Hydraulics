@@ -1,0 +1,30 @@
+{
+    "name": "sms/testimonials",
+    "title": "Testimonials",
+    "description": "A custom testimonials block.",
+    "category": "sms-blocks",
+    "icon": "grid-view",
+    "keywords": [
+        "sms-block"
+    ],
+    "version": "1.0.0",
+    "script": [
+        "file:../build/block.js"
+    ],
+    "style": [
+        "file:../build/style-block.css"
+    ],
+    "editorStyle": [
+        "file:../build/block.css"
+    ],
+    "acf": {
+        "mode": "preview",
+        "renderTemplate": "render.php"
+    },
+    "supports": {
+        "align": false,
+        "mode": false,
+        "jsx": true,
+        "multiple": true
+    }
+}
