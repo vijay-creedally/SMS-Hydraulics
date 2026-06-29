@@ -6,13 +6,13 @@
  * 2. On the classic attachment edit page, add a hidden nonce so edit_attachment
  *    can verify and save from $_POST.
  * 3. In the media modal, intercept the "Save" button click and fire our own
- *    AJAX (ca_save_attachment_meta) BEFORE WordPress's save-attachment-compat.
+ *    AJAX (cmv_save_attachment_meta) BEFORE WordPress's save-attachment-compat.
  */
 
 (function ($) {
     'use strict';
 
-    var AJAX_URL = (typeof ca_Admin !== 'undefined') ? ca_Admin.ajax_url : ajaxurl;
+    var AJAX_URL = (typeof CMV_Admin !== 'undefined') ? CMV_Admin.ajax_url : ajaxurl;
 
     /* ════════════════════════════════════════════════════════
        Select2 init — idempotent, scoped to a context element
@@ -22,7 +22,7 @@
             $ctx = $(document);
         }
 
-        $ctx.find('.ca-s2-users').each(function () {
+        $ctx.find('.cmv-s2-users').each(function () {
             var $el = $(this);
             if ($el.hasClass('select2-hidden-accessible')) {
                 try {
@@ -38,7 +38,7 @@
             });
         });
 
-        $ctx.find('.ca-s2-cats').each(function () {
+        $ctx.find('.cmv-s2-cats').each(function () {
             var $el = $(this);
             if ($el.hasClass('select2-hidden-accessible')) {
                 try {
@@ -59,8 +59,8 @@
        Collect values for a given post ID from Select2 widgets
        ════════════════════════════════════════════════════════ */
     function collectValues(postId) {
-        var $usersEl = $('#ca_users_' + postId);
-        var $catsEl = $('#ca_cats_' + postId);
+        var $usersEl = $('#cmv_users_' + postId);
+        var $catsEl = $('#cmv_cats_' + postId);
         var nonce = $usersEl.data('nonce') || $catsEl.data('nonce') || '';
         return {
             nonce: nonce,
@@ -73,7 +73,7 @@
     /* ════════════════════════════════════════════════════════
        Fire our AJAX save, return a jQuery Deferred
        ════════════════════════════════════════════════════════ */
-    function caSave(postId) {
+    function cmvSave(postId) {
         var data = collectValues(postId);
 
         // If no nonce found, nothing to save (fields not rendered)
@@ -82,7 +82,7 @@
         }
 
         return $.post(AJAX_URL, {
-            action: 'ca_save_attachment_meta',
+            action: 'cmv_save_attachment_meta',
             nonce: data.nonce,
             post_id: data.post_id,
             users: data.users,
@@ -96,20 +96,20 @@
     $(function () {
         initSelect2($(document));
 
-        $('form#post').on('submit.ca', function (e) {
+        $('form#post').on('submit.cmv', function (e) {
             var $form = $(this);
             var postId = parseInt($('#post_ID').val(), 10);
             if (!postId) {
                 return;
             }
 
-            if (!$('#ca_users_' + postId).length && !$('#ca_cats_' + postId).length) {
+            if (!$('#cmv_users_' + postId).length && !$('#cmv_cats_' + postId).length) {
                 return;
             }
 
             e.preventDefault();
-            caSave(postId).always(function () {
-                $form.off('submit.ca').submit(); // resubmit
+            cmvSave(postId).always(function () {
+                $form.off('submit.cmv').submit(); // resubmit
             });
         });
     });
@@ -134,7 +134,7 @@
                         continue;
                     }
                     var $n = $(node);
-                    if ($n.find('.ca-s2-users, .ca-s2-cats').length ||
+                    if ($n.find('.cmv-s2-users, .cmv-s2-cats').length ||
                         $n.hasClass('compat-attachment-fields') ||
                         $n.hasClass('attachment-details')) {
                         clearTimeout(_debTimer);
@@ -154,7 +154,7 @@
             });
         }
 
-        $(document).on('click.ca', '.attachment', function () {
+        $(document).on('click.cmv', '.attachment', function () {
             clearTimeout(_debTimer);
             _debTimer = setTimeout(function () {
                 initSelect2($('.media-modal'));
@@ -162,17 +162,17 @@
         });
 
         /* ── Intercept the modal "Save" button ─────────────── */
-        $(document).on('click.ca', '.media-modal .save-attachment, .attachment-details .save', function (e) {
+        $(document).on('click.cmv', '.media-modal .save-attachment, .attachment-details .save', function (e) {
             var $btn = $(this);
             var $modal = $btn.closest('.media-modal');
             var postId = 0;
 
-            var $usersEl = $modal.find('.ca-s2-users');
+            var $usersEl = $modal.find('.cmv-s2-users');
             if ($usersEl.length) {
                 postId = parseInt($usersEl.data('post-id'), 10);
             }
             if (!postId) {
-                var $catsEl = $modal.find('.ca-s2-cats');
+                var $catsEl = $modal.find('.cmv-s2-cats');
                 if ($catsEl.length) {
                     postId = parseInt($catsEl.data('post-id'), 10);
                 }
@@ -186,9 +186,9 @@
 
             $btn.prop('disabled', true).text('Saving…');
 
-            caSave(postId).always(function () {
+            cmvSave(postId).always(function () {
                 $btn.prop('disabled', false).text('Save');
-                $(document).off('click.ca', '.media-modal .save-attachment, .attachment-details .save');
+                $(document).off('click.cmv', '.media-modal .save-attachment, .attachment-details .save');
                 $btn[0].click();
                 setTimeout(function () {
                     attachModalSaveHook();
@@ -197,16 +197,16 @@
         });
 
         function attachModalSaveHook() {
-            $(document).on('click.ca', '.media-modal .save-attachment, .attachment-details .save', function (e) {
+            $(document).on('click.cmv', '.media-modal .save-attachment, .attachment-details .save', function (e) {
                 var $btn = $(this);
                 var $modal = $btn.closest('.media-modal');
                 var postId = 0;
-                var $uel = $modal.find('.ca-s2-users');
+                var $uel = $modal.find('.cmv-s2-users');
                 if ($uel.length) {
                     postId = parseInt($uel.data('post-id'), 10);
                 }
                 if (!postId) {
-                    var $cel = $modal.find('.ca-s2-cats');
+                    var $cel = $modal.find('.cmv-s2-cats');
                     if ($cel.length) {
                         postId = parseInt($cel.data('post-id'), 10);
                     }
@@ -218,9 +218,9 @@
                 e.stopImmediatePropagation();
                 e.preventDefault();
                 $btn.prop('disabled', true).text('Saving…');
-                caSave(postId).always(function () {
+                cmvSave(postId).always(function () {
                     $btn.prop('disabled', false).text('Save');
-                    $(document).off('click.ca', '.media-modal .save-attachment, .attachment-details .save');
+                    $(document).off('click.cmv', '.media-modal .save-attachment, .attachment-details .save');
                     $btn[0].click();
                     setTimeout(attachModalSaveHook, 400);
                 });

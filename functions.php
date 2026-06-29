@@ -77,4 +77,4 @@ require_once 'inc/admin/class.docs.php';
 require_once 'inc/fields/field-builder.php';
 
 
-require_once 'inc/client-area/bootstrap.php';
+require_once 'inc/client-area/client-area.php';
