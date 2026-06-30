@@ -6,6 +6,12 @@
  * @since 1.0.0
  */
 
+.compat-item {
+    min-height: 12.5rem !important;
+    overflow-y: scroll !important;
+    overflow: visible !important;
+}
+
 .cmv-admin-wrap {
     max-width: 1200px;
     margin-top: 20px;

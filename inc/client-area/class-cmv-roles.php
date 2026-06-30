@@ -26,7 +26,6 @@ class CMV_Roles {
 		add_filter( 'show_admin_bar',           [ __CLASS__, 'hide_admin_bar_for_clients' ] );
 	}
 
-	/* ── Register "client" role ──────────────────────────────── */
 
 	public static function register_client_role() {
 		remove_role( 'client' ); // remove stale copy on re-activation
@@ -37,7 +36,6 @@ class CMV_Roles {
 		] );
 	}
 
-	/* ── Per-user download permission field ─────────────────── */
 
 	public static function render_download_field( $user ) {
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -72,14 +70,12 @@ class CMV_Roles {
 		update_user_meta( $user_id, 'cmv_can_download', isset( $_POST['cmv_can_download'] ) ? '1' : '0' );
 	}
 
-	/* ── Helper: does the given (or current) user have download permission? ── */
 
 	public static function user_can_download( $user_id = null ) {
 		$user_id = $user_id ?: get_current_user_id();
 		return (string) get_user_meta( $user_id, 'cmv_can_download', true ) === '1';
 	}
 
-	/* ── Restrict wp-admin for clients ──────────────────────── */
 
 	public static function block_client_admin_access() {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {

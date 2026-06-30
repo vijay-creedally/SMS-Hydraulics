@@ -1,30 +1,49 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-	/* Password show/hide */
 	document.addEventListener('click', function (e) {
-		const toggleBtn = e.target.closest('.client-login__toggle');
-		if (!toggleBtn) return;
+		const toggleBtn = e.target.closest(
+			'.client-login__toggle, .client-forgot-password__toggle'
+		);
 
-		console.log('clicked');
+		if (!toggleBtn) {
+			return;
+		}
 
-		const wrapper = toggleBtn.closest('.client-login__password');
+		const wrapper = toggleBtn.closest(
+			'.client-login__password, .client-forgot-password__pw-row'
+		);
+
 		const input = wrapper ? wrapper.querySelector('input') : null;
 
-		if (!input) return;
+		if (!input) {
+			return;
+		}
 
-		if (input.type === 'password') {
-			input.type = 'text';
-			toggleBtn.classList.add('show');
-			toggleBtn.setAttribute('aria-label', 'Hide password');
-		} else {
-			input.type = 'password';
-			toggleBtn.classList.remove('show');
-			toggleBtn.setAttribute('aria-label', 'Show password');
+		const isHidden = input.type === 'password';
+
+		input.type = isHidden ? 'text' : 'password';
+		toggleBtn.classList.toggle('show', isHidden);
+		toggleBtn.setAttribute(
+			'aria-label',
+			isHidden ? 'Hide password' : 'Show password'
+		);
+	});
+
+
+	// stop right click and F12 for view-file & download
+	document.addEventListener('contextmenu', function (e) {
+		if (e.target.closest('.cmv-view-file')) {
+			e.preventDefault();
+		}
+	});
+
+	document.addEventListener('dragstart', function (e) {
+		if (e.target.closest('.cmv-view-file')) {
+			e.preventDefault();
 		}
 	});
 
 
-	/* Password strength meter */
 	document.addEventListener('input', function (e) {
 		if (!e.target.matches('#cmv_pass1')) return;
 
@@ -54,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 
-	/* Confirm password check */
 	document.addEventListener('input', function (e) {
 		if (!e.target.matches('#cmv_pass2')) return;
 
@@ -71,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 
-	/* Login form validation */
 	document.addEventListener('submit', function (e) {
 		if (!e.target.matches('#cmv-login-form')) return;
 
@@ -103,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 
-	/* Auto-dismiss alert banners */
 	setTimeout(function () {
 		document.querySelectorAll('.alert').forEach(function (el) {
 			el.style.transition = 'opacity 0.5s';
@@ -111,5 +127,46 @@ document.addEventListener('DOMContentLoaded', function () {
 			setTimeout(() => el.remove(), 500);
 		});
 	}, 6000);
-
 });
+
+(function () {
+	const params = new URLSearchParams(window.location.search);
+
+	const view = params.get('cmv_view');
+	const token = params.get('token');
+
+	// Enable protection only when both exist
+	if (!view || !token) {
+		return;
+	}
+
+	document.addEventListener('contextmenu', function (e) {
+		e.preventDefault();
+	});
+
+	document.addEventListener('keydown', function (e) {
+		const key = e.key.toLowerCase();
+
+		if (e.key === 'F12') {
+			e.preventDefault();
+		}
+
+		if (e.ctrlKey && e.shiftKey && key === 'i') {
+			e.preventDefault();
+		}
+
+		if (e.ctrlKey && e.shiftKey && key === 'j') {
+			e.preventDefault();
+		}
+
+		if (e.ctrlKey && e.shiftKey && key === 'c') {
+			e.preventDefault();
+		}
+
+		if (e.ctrlKey && key === 'u') {
+			e.preventDefault();
+		}
+	});
+
+	console.log('CMV protection enabled');
+})();

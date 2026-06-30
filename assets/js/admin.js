@@ -34,7 +34,8 @@
                 placeholder: 'Search and select clients…',
                 allowClear: true,
                 width: '100%',
-                dropdownParent: $drop.length ? $drop : $('body')
+                dropdownParent: $drop.length ? $drop : $('body'),
+                dropdownAutoWidth: true,
             });
         });
 
@@ -50,7 +51,8 @@
                 placeholder: 'Search and select categories…',
                 allowClear: true,
                 width: '100%',
-                dropdownParent: $drop.length ? $drop : $('body')
+                dropdownParent: $drop.length ? $drop : $('body'),
+                dropdownAutoWidth: true,
             });
         });
     }

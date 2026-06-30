@@ -15,7 +15,7 @@ class CMV_Secure_Download {
 
 	public static function init() {
 		add_action( 'template_redirect', [ __CLASS__, 'handle_secure_download' ], 1 );
-		add_action( 'template_redirect', [ __CLASS__, 'handle_secure_view' ], 1 );
+		add_action( 'template_redirect', [ __CLASS__, 'handle_secure_stream' ], 1 );
 	}
 
 	/* ══════════════════════════════════════════════════════════
@@ -57,12 +57,12 @@ class CMV_Secure_Download {
 	   ?cmv_view=ATTACHMENT_ID&token=TOKEN
 	   ══════════════════════════════════════════════════════════ */
 
-	public static function handle_secure_view() {
-		if ( ! isset( $_GET['cmv_view'] ) ) {
+	public static function handle_secure_stream() {
+		if ( ! isset( $_GET['cmv_stream'] ) ) {
 			return;
 		}
 
-		$attachment_id = absint( $_GET['cmv_view'] );
+		$attachment_id = absint( $_GET['cmv_stream'] );
 		$token         = sanitize_text_field( $_GET['token'] ?? '' );
 
 		if ( ! is_user_logged_in() ) {
@@ -104,7 +104,6 @@ class CMV_Secure_Download {
 		exit;
 	}
 
-	/* ── Token generators (HMAC, daily-rotated) ─────────────── */
 
 	public static function generate_download_token( $attachment_id, $user_id ) {
 		$secret = wp_salt( 'secure_auth' ) . date( 'Ymd' );
@@ -116,7 +115,6 @@ class CMV_Secure_Download {
 		return hash_hmac( 'sha256', 'view|' . $attachment_id . '|' . $user_id, $secret );
 	}
 
-	/* ── Build secure URLs ───────────────────────────────────── */
 
 	public static function get_download_url( $attachment_id, $user_id ) {
 		return add_query_arg( [
@@ -129,7 +127,17 @@ class CMV_Secure_Download {
 		return add_query_arg( [
 			'cmv_view' => $attachment_id,
 			'token'    => self::generate_view_token( $attachment_id, $user_id ),
-		], home_url( '/' ) );
+		], home_url( '/page-doc-view/' ) );
+	}
+
+	public static function get_stream_url( $attachment_id, $user_id ) {
+		return add_query_arg(
+			[
+				'cmv_stream' => $attachment_id,
+				'token'      => self::generate_view_token( $attachment_id, $user_id ),
+			],
+			home_url( '/' )
+		);
 	}
 }
 

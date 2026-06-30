@@ -18,6 +18,7 @@ class CMV_Shortcodes {
 		add_shortcode( 'cmv_forgot_password', [ __CLASS__, 'sc_forgot' ] );
 		add_shortcode( 'cmv_reset_password',  [ __CLASS__, 'sc_reset' ] );
 		add_shortcode( 'cmv_media_portal',    [ __CLASS__, 'sc_portal' ] );
+		add_shortcode( 'cmv_document_viewer', [ __CLASS__, 'get_document_viewer' ] );
 	}
 
 	/* ════════════════════════════════════════════════════════════
@@ -83,12 +84,17 @@ class CMV_Shortcodes {
 		                        type="password"
 		                        id="password"
 		                        name="password"
-		                        class="client-login__input rounded-2 py-2 px-3 pe-5"
+		                        class="client-login__input rounded-2 py-2 px-3"
 		                        autocomplete="current-password"
 		                        required
 		                    >
 
-		                    <button type="button" class="client-login__toggle bg-transparent border-0" aria-label="Show password"></button>
+		                    <button
+							    type="button"
+							    class="client-login__toggle bg-transparent border-0"
+							    aria-label="Show password">
+							    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/eye-off.svg' ); ?>" alt="">
+							</button>
 
 		                </div>
 
@@ -162,9 +168,9 @@ class CMV_Shortcodes {
 							   value="<?php echo esc_attr( $_POST['cmv_email'] ?? '' ); ?>"
 							   autocomplete="email" required>
 					</div>
-					<button type="submit" class="client-forgot-password__button client-forgot-password__button--primary btn text-white py-2.5 rounded-2 fw-bold w-100 mt-2">Send Reset Link</button>
-					<p class="client-forgot-password__footer text-center mt-3 mb-0 small">
-						<a href="<?php echo esc_url( CMV_Auth::page_url( 'client-login' ) ); ?>" class="cmv-link text-decoration-none fw-bold">&larr; Back to login</a>
+					<button type="submit" class="client-forgot-password__button client-forgot-password__button--primary btn text-white py-2.5 rounded-2 fw-bold w-100"><?php echo esc_html("Send Reset Link");?></button>
+					<p class="client-forgot-password__footer text-center mb-0 small">
+						<a href="<?php echo esc_url( CMV_Auth::page_url( 'client-login' ) ); ?>" class="cmv-link text-decoration-none fw-bold">&larr;<?php echo esc_html("Back to login");?></a>
 					</p>
 				</form>
 			</div>
@@ -178,7 +184,7 @@ class CMV_Shortcodes {
 
 	public static function sc_reset() {
 		$key   = sanitize_text_field( $_GET['key']   ?? '' );
-		$login = sanitize_text_field( $_GET['login'] ?? '' );
+		$login = sanitize_text_field( $_GET['email'] ?? '' );
 		$flash = CMV_Auth::get_flash( 'reset' );
 
 		if ( empty( $key ) || empty( $login ) ) {
@@ -207,9 +213,9 @@ class CMV_Shortcodes {
 						<label class="fw-bold text-dark mb-1 small text-uppercase" for="cmv_pass1"><?php echo esc_html("New Password"); ?></label>
 						<div class="client-forgot-password__pw-row position-relative">
 							<input type="password" id="cmv_pass1" name="cmv_pass1"
-								   class="form-control rounded-2 py-2 px-3 pe-5"
+								   class="rounded-2 py-2 px-3 pe-5"
 								   autocomplete="new-password" required minlength="8">
-							<button type="button" class="cmv-toggle-pw btn position-absolute end-0 top-50 translate-middle-y border-0 text-muted" aria-label="Show password">&#128065;</button>
+							<button type="button" class="client-forgot-password__toggle bg-transparent border-0" aria-label="Show password"></button>
 						</div>
 						<div class="client-forgot-password__strength-bar rounded-1 mt-2">
 							<div class="client-forgot-password__strength-fill h-100" id="cmv-sf"></div>
@@ -217,10 +223,27 @@ class CMV_Shortcodes {
 						<span class="client-forgot-password__strength-lbl small mt-1" id="cmv-sl"></span>
 					</div>
 					<div class="client-forgot-password__field d-flex flex-column gap-1">
-						<label class="fw-bold text-dark mb-1 small text-uppercase" for="cmv_pass2"><?php echo esc_html("Confirm Password");?></label>
-						<input type="password" id="cmv_pass2" name="cmv_pass2"
-							   class="client-forgot-password__input rounded-2 py-2 px-3"
-							   autocomplete="new-password" required>
+						<label class="fw-bold text-dark mb-1 small text-uppercase" for="cmv_pass2">
+							<?php echo esc_html( 'Confirm Password' ); ?>
+						</label>
+									
+						<div class="client-forgot-password__pw-row position-relative">
+							<input
+								type="password"
+								id="cmv_pass2"
+								name="cmv_pass2"
+								class="client-forgot-password__input rounded-2 py-2 px-3 pe-5"
+								autocomplete="new-password"
+								required
+							>
+									
+							<button
+								type="button"
+								class="client-forgot-password__toggle bg-transparent border-0"
+								aria-label="Show password"
+							></button>
+						</div>
+									
 						<span class="text-danger small" id="err-p2"></span>
 					</div>
 					<button type="submit" class="client-forgot-password__button client-forgot-password__button--primary btn text-white py-2.5 rounded-2 fw-bold w-100 mt-2">Reset Password</button>
@@ -288,6 +311,15 @@ class CMV_Shortcodes {
 
 					<?php foreach ( $all_cats as $cat ) :
 						$is_active = ( $cat_id === (int) $cat->term_id );
+						$file_count_query = CMV_Meta_Fields::get_user_attachments(
+						$uid,
+						$cat->term_id,
+							-1,
+							1
+						);
+
+						$file_count = (int) $file_count_query->found_posts;
+
 					?>
 
 						<a href="<?php echo esc_url( add_query_arg( 'cmv_cat', $cat->term_id, $base_url ) ); ?>"
@@ -296,7 +328,7 @@ class CMV_Shortcodes {
 							<?php echo esc_html( $cat->name ); ?>
 					
 							<span class="badge ms-1 <?php echo $is_active ? 'bg-white text-dark' : 'bg-secondary'; ?>">
-								<?php echo (int) $cat->count; ?>
+								<?php echo (int) $file_count; ?>
 							</span>
 					
 						</a>
@@ -315,21 +347,38 @@ class CMV_Shortcodes {
 						$att_id   = get_the_ID();
 						$mime     = get_post_mime_type( $att_id );
 						$is_img   = strpos( $mime, 'image/' ) === 0;
+						$is_video = strpos( $mime, 'video/' ) === 0;
+						$is_pdf   = ( 'application/pdf' === $mime );
+
+						$is_viewable = $is_img || $is_video || $is_pdf;
+
 						$cats_lst = wp_get_object_terms( $att_id, 'media_category', [ 'fields' => 'names' ] );
 						$view_url = CMV_Secure_Download::get_view_url( $att_id, $uid );
 						$dl_url   = CMV_Secure_Download::get_download_url( $att_id, $uid );
-				
-						if     ( $mime === 'application/pdf' )                                                   $badge = '<span class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 px-3 py-2 rounded">PDF</span>';
-						elseif ( strpos( $mime, 'video/' ) === 0 )                                               $badge = '<span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2 rounded">VIDEO</span>';
-						elseif ( in_array( $mime, [ 'application/zip', 'application/x-zip-compressed' ] ) )     $badge = '<span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 rounded text-dark">ZIP</span>';
-						elseif ( strpos( $mime, 'application/vnd' ) === 0 || strpos( $mime, 'text/' ) === 0 )   $badge = '<span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 px-3 py-2 rounded">DOC</span>';
-						else                                                                                      $badge = '<span class="fs-1 text-muted">&#128196;</span>';
+
+						$thumb_url = wp_get_attachment_image_url( $att_id, 'medium' );
+
+						if ( ! $thumb_url ) {
+							$thumb_url = wp_mime_type_icon( $att_id );
+						}
+
+						if ( $is_pdf ) {
+							$badge = '<span class="badge bg-danger bg-opacity-10 text-danger border border-danger border-opacity-25 px-3 py-2 rounded">PDF</span>';
+						} elseif ( $is_video ) {
+							$badge = '<span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 px-3 py-2 rounded">VIDEO</span>';
+						} elseif ( in_array( $mime, [ 'application/zip', 'application/x-zip-compressed' ], true ) ) {
+							$badge = '<span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 px-3 py-2 rounded text-dark">ZIP</span>';
+						} elseif ( strpos( $mime, 'application/vnd' ) === 0 || strpos( $mime, 'text/' ) === 0 ) {
+							$badge = '<span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 px-3 py-2 rounded">DOC</span>';
+						} else {
+							$badge = '<span class="fs-1 text-muted">&#128196;</span>';
+						}   $badge = '<span class="fs-1 text-muted">&#128196;</span>';
 				?>
 				<div class="media-portal__files--item col">
 					<div class="media-portal__files--card h-100 shadow-sm border border-light rounded-3 overflow-hidden position-relative">
 						<div class="media-portal__files--thumb bg-light d-flex align-items-center justify-content-center overflow-hidden position-relative">
 							<?php if ( $is_img ) : ?>
-								<img src="<?php echo esc_url( $view_url ); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
+								<img src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php the_title_attribute(); ?>" loading="lazy">
 							<?php else : ?>
 								<?php echo $badge; ?>
 							<?php endif; ?>
@@ -338,18 +387,22 @@ class CMV_Shortcodes {
 							<h6 class="media-portal__files--title text-dark fw-bold mb-1 text-truncate" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></h6>
 							<p class="media-portal__files--date text-muted small mb-0 mt-auto"><?php echo esc_html( get_the_date() ); ?></p>
 						</div>
-						<div class="media-portal__files--footer bg-white border-top-0 p-3 pt-0 d-grid gap-2">
-							<a href="<?php echo esc_url( $view_url ); ?>" target="_blank"
+						<div class="media-portal__files--footer">
+							<?php if( $is_viewable ) : ?>	
+							<a href="<?php echo esc_url( $view_url ); ?>"
+							   target="_blank"
 							   class="media-portal__files--view-btn btn btn-outline-dark btn-sm flex-grow-1 py-1.5 rounded-2 d-flex align-items-center justify-content-center gap-1">
-							   &#128065; View
+							    &#128065; View
 							</a>
+							<?php endif;?>
+
 							<?php if ( $can_dl ) : ?>
 								<a href="<?php echo esc_url( $dl_url ); ?>"
-								   class="media-portal__files--download-btn btn text-white btn-sm flex-grow-1 py-1.5 rounded-2 d-flex align-items-center justify-content-center gap-1">
+								   class="media-portal__files--download-btn btn text-white btn-sm py-1.5 rounded-2 d-flex align-items-center justify-content-center gap-1 <?php echo $is_viewable ? 'flex-grow-1' : ''; ?>">
 								   &#11015; Download
 								</a>
 							<?php else : ?>
-								<span class="media-portal__files--download-btn btn btn-light btn-sm flex-grow-1 py-1.5 rounded-2 text-muted d-flex align-items-center justify-content-center gap-1 cursor-not-allowed" title="Download not permitted">
+								<span class="media-portal__files--download-btn btn btn-light btn-sm py-1.5 rounded-2 text-muted d-flex align-items-center justify-content-center gap-1 cursor-not-allowed <?php echo $is_viewable ? 'flex-grow-1' : ''; ?>" title="Download not permitted">
 									&#128274; Locked
 								</span>
 							<?php endif; ?>
@@ -414,8 +467,120 @@ class CMV_Shortcodes {
 		$terms = wp_get_object_terms( $att_ids, 'media_category', [ 'orderby' => 'name' ] );
 		return is_wp_error( $terms ) ? [] : $terms;
 	}
-}
 
+	public static function get_document_viewer() {
+
+    $attachment_id = absint($_GET['cmv_view'] ?? 0);
+    $token         = sanitize_text_field($_GET['token'] ?? '');
+
+    if (!$attachment_id || !$token) {
+        return '';
+    }
+
+    $file_url = CMV_Secure_Download::get_stream_url(
+        $attachment_id,
+        get_current_user_id()
+    );
+
+    if (!$file_url) {
+        return '<div class="alert alert-danger">File not found.</div>';
+    }
+
+    $mime = get_post_mime_type($attachment_id);
+
+    $is_image = strpos($mime, 'image/') === 0;
+    $is_video = strpos($mime, 'video/') === 0;
+    $is_pdf   = $mime === 'application/pdf';
+    $is_docx  = $mime === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    $is_doc   = $mime === 'application/msword'; 
+
+    $js_safe_file_url = esc_url_raw( $file_url );
+
+    ob_start();
+    ?>
+
+    <div class="client-media-viewer-wrapper cmv-viewer--<?php echo esc_attr(str_replace('/', '-', $mime)); ?>">
+
+        <?php if ($is_image): ?>
+
+            <img src="<?php echo esc_url($file_url); ?>" draggable="false" oncontextmenu="return false;" />
+
+        <?php elseif ($is_video): ?>
+
+            <video controls controlsList="nodownload noplaybackrate noremoteplayback">
+                <source src="<?php echo esc_url($file_url); ?>" type="<?php echo esc_attr($mime); ?>">
+            </video>
+
+        <?php elseif ($is_pdf): ?>
+
+            <div id="pdf-viewer" class="pdf-viewer"></div>
+            <div id="pdf-error" class="cmv-error"></div>
+
+            <script src="<?php echo get_stylesheet_directory_uri(); ?>/lib/docview/pdf.min.js"></script>
+            <script>
+            (function() {
+                const url = "<?php echo htmlspecialchars_decode(esc_js(esc_url_raw($js_safe_file_url))); ?>";
+                
+                window.pdfjsLib.GlobalWorkerOptions.workerSrc = "<?php echo get_stylesheet_directory_uri(); ?>/lib/docview/pdf.worker.min.js";
+
+                async function renderPDF() {
+                    try {
+                        const loadingTask = window.pdfjsLib.getDocument({
+                            url: url,
+                            disableRange: true,
+                            disableStream: true,
+                            withCredentials: true
+                        });
+                        
+                        const pdf = await loadingTask.promise;
+                        const container = document.getElementById("pdf-viewer");
+                        container.innerHTML = ''; 
+
+                        for (let i = 1; i <= pdf.numPages; i++) {
+                            const page = await pdf.getPage(i);
+                            const viewport = page.getViewport({ scale: 1.5 });
+                            const canvas = document.createElement("canvas");
+                            canvas.width = viewport.width;
+                            canvas.height = viewport.height;
+                            canvas.style.pointerEvents = "none";
+                            canvas.style.userSelect = "none";
+                            container.appendChild(canvas);
+                            
+                            await page.render({ 
+                                canvasContext: canvas.getContext("2d"), 
+                                viewport: viewport 
+                            }).promise;
+                        }
+                    } catch (err) {
+                        console.error("PDF load failed:", err);
+                        document.getElementById("pdf-error").innerText = "Failed to load PDF: " + err.message;
+                    }
+                }
+
+                if (window.pdfjsLib) { 
+                    renderPDF(); 
+                } else { 
+                    window.addEventListener('DOMContentLoaded', renderPDF); 
+                }
+
+                document.getElementById('pdf-viewer').addEventListener('contextmenu', e => e.preventDefault());
+            })();
+            </script>
+
+        <?php else: ?>
+
+            <div class="cmv-empty">
+                Preview is not available for this file type.
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+    <?php
+    return ob_get_clean();
+}
+}
 function sms_cmv_get_user_categories( $user_id ) {
 	return CMV_Shortcodes::get_user_categories( $user_id );
 }

@@ -17,6 +17,22 @@ function sms_scripts() {
 	wp_enqueue_style( 'sms', get_stylesheet_directory_uri() . '/assets/build/frontend.css', array(), $deps['version'] );
 	// JS
 	wp_enqueue_script( 'sms', get_stylesheet_directory_uri() . '/assets/build/frontend.js', array(), $deps['version'], true );
+	
+	if (isset($_GET['cmv_view']) && isset($_GET['token'])) {
+		wp_enqueue_style(
+		    'pdfjs-viewer',
+		    get_stylesheet_directory_uri() . '/lib/docview/pdf_viewer.min.css',
+		    [],
+		    '5.4.149'
+		);
+
+		wp_enqueue_script_module(
+		    'pdfjs',
+		    get_stylesheet_directory_uri() . '/lib/docview/pdf.min.mjs',
+		    [],
+		    '5.4.149'
+		);
+	}
 
 	wp_localize_script( 'sms', 'smsObj', [
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),

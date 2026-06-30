@@ -105,6 +105,9 @@
         }
 
         &--footer {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1rem;
             gap: 0.5rem;
         }
 
