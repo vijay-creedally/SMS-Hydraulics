@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		if (!toggleBtn) return;
 
-		let wrapper = toggleBtn.closest('.position-relative');
+		const wrapper = toggleBtn.closest(
+			'.client-login__password, .client-forgot-password__pw-row'
+		);
 
 		if (!wrapper) {
 			wrapper = toggleBtn.closest('.client-forgot-password__pw-row');

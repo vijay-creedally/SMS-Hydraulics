@@ -78,7 +78,7 @@ class CMV_Shortcodes {
 				            <?php echo esc_html__( 'Password', 'sms' ); ?>
 				        </label>
 
-				        <div class="position-relative">
+				        <div class="client-login__password position-relative ">
 				            <input
 				                type="password"
 				                id="password"
