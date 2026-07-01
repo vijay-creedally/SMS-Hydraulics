@@ -27,7 +27,7 @@ class CMV_Shortcodes {
 
 	public static function sc_login() {
 		if ( is_user_logged_in() && current_user_can( 'client' ) ) {
-			wp_safe_redirect( home_url( '/client-media-vault' ) );
+			wp_safe_redirect( CMV_Auth::page_url( 'client-media-vault' ) );
 			exit;
 		}
 
@@ -184,7 +184,7 @@ class CMV_Shortcodes {
 
 	public static function sc_reset() {
 		$key   = sanitize_text_field( $_GET['key']   ?? '' );
-		$login = sanitize_text_field( $_GET['email'] ?? '' );
+		$login = sanitize_text_field( $_GET['login'] ?? $_GET['email'] ?? '' );
 		$flash = CMV_Auth::get_flash( 'reset' );
 
 		if ( empty( $key ) || empty( $login ) ) {
@@ -327,7 +327,7 @@ class CMV_Shortcodes {
 					
 							<?php echo esc_html( $cat->name ); ?>
 					
-							<span class="badge ms-1 <?php echo $is_active ? 'bg-white text-dark' : 'bg-secondary'; ?>">
+							<span class="media-portal__tabs--count badge ms-1 <?php echo $is_active ? 'bg-white text-dark' : ''; ?>">
 								<?php echo (int) $file_count; ?>
 							</span>
 					

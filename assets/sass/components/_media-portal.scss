@@ -31,15 +31,15 @@
             white-space: nowrap;
 
             &-download {
-                background: rgba(#198754, .1);
-                color: #198754;
-                border: 1px solid rgba(#198754, .2);
+                background: rgba($blue-5, .1);
+                color: $black;
+                border: 1px solid rgba($blue-5, .2);
             }
 
             &-view {
-                background: rgba(#6c757d, .1);
-                color: #6c757d;
-                border: 1px solid rgba(#6c757d, .2);
+                background: rgba($blue-5, .1);
+                color: $black;
+                border: 1px solid rgba($blue-5, .2);
             }
         }
     }
@@ -115,8 +115,8 @@
             border: 0.0938rem solid #dee2e6 !important;
             border-radius: 3.125rem !important;
             padding: 0.375rem 1rem !important;
-            color: #212529 !important;
-            background: #fff !important;
+            color: $black !important;
+            background: $white !important;
             font-size: 0.875rem;
             text-decoration: none;
             font-weight: 500;
@@ -130,16 +130,16 @@
         &--download-btn {
             border-radius: 3.125rem !important;
             padding: 0.375rem 1rem !important;
-            background: #1e3d2f !important;
-            color: #fff !important;
+            background: $red-6 !important;
+            color: $white !important;
             text-decoration: none;
             font-size: 0.875rem;
             font-weight: 600;
             border: none !important;
 
             &:hover {
-                background: #163022 !important;
-                color: #fff !important;
+                background: darken($red-6, 10%) !important;
+                color: $white !important;
             }
 
             &.cursor-not-allowed {
@@ -163,7 +163,6 @@
     }
 
     &__tabs {
-
         &--link {
             display: inline-flex;
             align-items: center;
@@ -173,25 +172,30 @@
             text-transform: uppercase;
             border-radius: 999px;
             background: #fff;
-            color: #1e3d2f;
+            color: black;
             text-decoration: none;
             font-weight: 500;
             transition: all .2s ease;
 
             &:hover {
-                color: #1e3d2f;
-                border-color: #1e3d2f;
+                color: $white;
+                background: $red-6;
                 text-decoration: none;
+
+                .media-portal__tabs--count {
+                    background: $white;
+                    color: $red-6;
+                }
             }
 
             &.active {
-                background: #1e3d2f;
-                border-color: #1e3d2f;
-                color: #fff;
+                background: $red-6;
+                border-color: $red-6;
+                color: $white;
 
                 .media-portal__count {
-                    background: rgba(255, 255, 255, .15);
-                    color: #fff;
+                    background: rgba($red-6, .1);
+                    color: $white;
                 }
             }
 
@@ -199,6 +203,11 @@
                 padding: 0.125rem 0.625rem;
                 border-radius: 50%;
             }
+        }
+
+        &--count {
+            background: $red-6;
+            color: $white;
         }
     }
 
@@ -211,7 +220,7 @@
         padding: 0 .5rem;
         border-radius: 50px;
         background: #eef2f7;
-        color: #495057;
+        color: $white;
         font-size: .875rem;
         font-weight: 600;
     }
@@ -224,8 +233,8 @@
             height: 2rem;
             border-radius: 8px !important;
             border: 0.0938rem solid #dee2e6 !important;
-            background: #fff;
-            color: #212529;
+            background: $white;
+            color: $black;
             font-size: 0.875rem;
             font-weight: 500;
             text-decoration: none;
@@ -237,17 +246,17 @@
             box-shadow: none !important;
 
             &:hover {
-                background: #f8f9fa;
-                color: #212529;
-                border-color: #dee2e6 !important;
+                background: $red-6 !important;
+                color: $white !important;
+                border-color: $red-6 !important;
             }
         }
 
         &.active {
             .page-link {
-                background: #1e3d2f !important;
-                border-color: #1e3d2f !important;
-                color: #fff !important;
+                background: $red-6 !important;
+                border-color: $red-6 !important;
+                color: $white !important;
                 font-weight: 600;
             }
         }

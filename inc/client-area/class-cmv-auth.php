@@ -34,7 +34,7 @@ class CMV_Auth {
 			return;
 		}
 		if ( is_page( 'client-login' ) ) {
-			wp_safe_redirect( self::page_url( 'cmv-portal' ) );
+			wp_safe_redirect( self::page_url( 'client-media-vault' ) );
 			exit;
 		}
 	}
@@ -53,7 +53,8 @@ class CMV_Auth {
 
 		if ( empty( $username ) || empty( $password ) ) {
 			self::set_flash( 'login', 'error', __( 'Please enter your login details.', 'sms' ) );
-			return;
+			wp_safe_redirect( self::page_url( 'client-login' ) );
+			exit;
 		}
 
 		$creds = [
@@ -65,10 +66,11 @@ class CMV_Auth {
 
 		if ( is_wp_error( $user ) ) {
 			self::set_flash( 'login', 'error', __( 'Invalid username or password.', 'sms' ) );
-			return;
+			wp_safe_redirect( self::page_url( 'client-login' ) );
+			exit;
 		}
 
-		wp_safe_redirect( self::page_url( 'cmv-portal' ) );
+		wp_safe_redirect( self::page_url( 'client-media-vault' ) );
 		exit;
 	}
 
@@ -103,25 +105,28 @@ class CMV_Auth {
 		$login = sanitize_email( $_POST['cmv_email'] ?? '' );
 		if ( empty( $login ) ) {
 			self::set_flash( 'forgot', 'error', __( 'Please enter your email address.', 'sms' ) );
-			return;
+			wp_safe_redirect( self::page_url( 'forgot-password' ) );
+			exit;
 		}
 
 		$user = get_user_by( 'email', $login );
 		if ( ! $user ) {
 			// Generic message to prevent user enumeration
 			self::set_flash( 'forgot', 'success', __( 'If that email exists, a reset link has been sent.', 'sms' ) );
-			return;
+			wp_safe_redirect( self::page_url( 'forgot-password' ) );
+			exit;
 		}
 
 		$key = get_password_reset_key( $user );
 		if ( is_wp_error( $key ) ) {
 			self::set_flash( 'forgot', 'error', __( 'Could not generate reset link. Please try again.', 'sms' ) );
-			return;
+			wp_safe_redirect( self::page_url( 'forgot-password' ) );
+			exit;
 		}
 
 		$reset_url = add_query_arg(
 			[ 'key' => $key, 'login' => rawurlencode( $user->user_login ) ],
-			self::page_url( 'cmv-reset' )
+			self::page_url( 'reset-password' )
 		);
 
 		$subject = __( 'Password Reset', 'sms' );
@@ -134,6 +139,8 @@ class CMV_Auth {
 		wp_mail( $user->user_email, $subject, $message );
 
 		self::set_flash( 'forgot', 'success', __( 'If that email exists, a reset link has been sent.', 'sms' ) );
+		wp_safe_redirect( self::page_url( 'forgot-password' ) );
+		exit;
 	}
 
 	/* ══════════════════════════════════════════════════════════
@@ -155,17 +162,20 @@ class CMV_Auth {
 
 		if ( empty( $pass1 ) || $pass1 !== $pass2 ) {
 			self::set_flash( 'reset', 'error', __( 'Passwords do not match or are empty.', 'sms' ) );
-			return;
+			wp_safe_redirect( add_query_arg( [ 'key' => $key, 'login' => rawurlencode( $login ) ], self::page_url( 'reset-password' ) ) );
+			exit;
 		}
 		if ( strlen( $pass1 ) < 8 ) {
 			self::set_flash( 'reset', 'error', __( 'Password must be at least 8 characters.', 'sms' ) );
-			return;
+			wp_safe_redirect( add_query_arg( [ 'key' => $key, 'login' => rawurlencode( $login ) ], self::page_url( 'reset-password' ) ) );
+			exit;
 		}
 
 		$user = check_password_reset_key( $key, $login );
 		if ( is_wp_error( $user ) ) {
 			self::set_flash( 'reset', 'error', __( 'Invalid or expired reset link. Please request a new one.', 'sms' ) );
-			return;
+			wp_safe_redirect( self::page_url( 'forgot-password' ) );
+			exit;
 		}
 
 		reset_password( $user, $pass1 );
